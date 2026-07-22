@@ -141,44 +141,11 @@
             opacity: 0.9;
         }
 
-        /* Tracking Result Box */
         #trackingResult {
             margin-top: 20px;
             text-align: left;
             border-top: 2px dashed #E2E8F0;
             padding-top: 15px;
-        }
-
-        .status-timeline {
-            margin: 20px 0;
-            position: relative;
-            padding-left: 20px;
-            border-left: 3px solid #CBD5E1;
-        }
-
-        .status-step {
-            margin-bottom: 15px;
-            position: relative;
-        }
-
-        .status-step::before {
-            content: '';
-            position: absolute;
-            left: -27px;
-            top: 4px;
-            width: 11px;
-            height: 11px;
-            border-radius: 50%;
-            background: #CBD5E1;
-        }
-
-        .status-step.active::before {
-            background: var(--success);
-            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.3);
-        }
-
-        .status-step.active h4 {
-            color: var(--success);
         }
 
         /* Main Container */
@@ -358,15 +325,55 @@
                 </button>
             </form>
         </div>
+
+        <!-- Client Email / Message Dispatcher -->
+        <div class="card" style="border-left: 4px solid var(--accent);">
+            <h3 style="color: var(--primary); margin-bottom: 10px;"><i class="fa-solid fa-envelope"></i> Send Update / Message to Client</h3>
+            <p style="font-size: 13px; color: #64748B; margin-bottom: 15px;">Send a direct email message regarding a specific tracking ID to your client's inbox.</p>
+            
+            <div class="form-group">
+                <label>Client Email Address</label>
+                <input type="email" id="clientEmailInput" placeholder="client@example.com">
+            </div>
+            
+            <div class="form-group">
+                <label>Message / Update Details</label>
+                <textarea id="clientMessageInput" rows="4" placeholder="Type your message, payment instructions, or clearance update here..."></textarea>
+            </div>
+            
+            <button onclick="sendClientEmail()" class="btn-primary" style="width: 100%; cursor: pointer;">Send Email to Client</button>
+        </div>
     </div>
 
+    <!-- Accepted Payment Methods Section -->
+    <section style="padding: 40px 20px; background: #fff; text-align: center; border-top: 1px solid #E2E8F0;">
+        <h3 style="color: var(--primary); margin-bottom: 20px;"><i class="fa-solid fa-shield-halved"></i> Secure & Accepted Payment Methods</h3>
+        <div style="display: flex; justify-content: center; gap: 30px; font-size: 36px; color: #1E293B; flex-wrap: wrap; align-items: center;">
+            <i class="fa-brands fa-cc-visa" title="Visa" style="color: #1A1F71;"></i>
+            <i class="fa-brands fa-cc-mastercard" title="Mastercard" style="color: #EB001B;"></i>
+            <i class="fa-brands fa-paypal" title="PayPal" style="color: #003087;"></i>
+            <i class="fa-solid fa-building-columns" title="Bank Transfer" style="color: #0F172A;"></i>
+        </div>
+    </section>
+
     <!-- FAQ Section -->
-    <section id="faq" style="padding: 40px 20px; background: white; border-top: 1px solid #E2E8F0;">
+    <section id="faq" style="padding: 50px 20px; background: var(--light);">
         <div style="max-width: 800px; margin: 0 auto;">
-            <h2 style="text-align: center; color: var(--primary); margin-bottom: 25px;">Frequently Asked Questions</h2>
-            <div style="background: var(--light); padding: 15px; border-radius: 8px; margin-bottom: 10px;">
-                <h4 style="color: var(--primary); margin-bottom: 5px;">How do I track my shipment?</h4>
-                <p style="font-size: 14px; color: #475569;">Enter your tracking ID into the search bar at the top of the homepage to view real-time status updates.</p>
+            <h2 style="text-align: center; color: var(--primary); margin-bottom: 30px;">Frequently Asked Questions</h2>
+            
+            <div style="background: white; padding: 20px; border-radius: 8px; margin-bottom: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                <h4 style="color: var(--primary); margin-bottom: 8px;"><i class="fa-solid fa-circle-question" style="color: var(--accent);"></i> How do I track my shipment?</h4>
+                <p style="color: #475569; font-size: 14px;">Simply enter your unique tracking ID into the search or tracking bar at the top of the homepage to view live status updates instantly.</p>
+            </div>
+            
+            <div style="background: white; padding: 20px; border-radius: 8px; margin-bottom: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                <h4 style="color: var(--primary); margin-bottom: 8px;"><i class="fa-solid fa-circle-question" style="color: var(--accent);"></i> How long does international delivery take?</h4>
+                <p style="color: #475569; font-size: 14px;">Standard international shipping typically takes between 3 to 7 business days depending on destination customs clearance procedures.</p>
+            </div>
+            
+            <div style="background: white; padding: 20px; border-radius: 8px; margin-bottom: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                <h4 style="color: var(--primary); margin-bottom: 8px;"><i class="fa-solid fa-circle-question" style="color: var(--accent);"></i> What items are prohibited?</h4>
+                <p style="color: #475569; font-size: 14px;">Prohibited items include hazardous materials, explosives, illegal substances, and unapproved restricted chemicals or perishable goods.</p>
             </div>
         </div>
     </section>
@@ -384,10 +391,15 @@
         </div>
     </footer>
 
-    <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/2348120067056?text=Hello%20Manager,%20I%20have%20an%20inquiry%20about%20a%20package." class="whatsapp-float" target="_blank" style="position: fixed; bottom: 20px; right: 20px; background-color: #25D366; color: white; width: 55px; height: 55px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 28px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); text-decoration: none; z-index: 1000;">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <!-- Floating Contact Buttons (WhatsApp & Email) -->
+    <div style="position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; gap: 10px; z-index: 1000;">
+        <a href="mailto:trackskyworld@gmail.com" target="_blank" style="background: #2563EB; color: white; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); text-decoration: none;">
+            <i class="fa-solid fa-envelope"></i>
+        </a>
+        <a href="https://wa.me/2348120067056?text=Hello%20Manager,%20I%20have%20an%20inquiry%20about%20a%20package." target="_blank" style="background-color: #25D366; color: white; width: 55px; height: 55px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 28px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); text-decoration: none;">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
 
     <!-- Load Supabase Library -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -395,4 +407,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
