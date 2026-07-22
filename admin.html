@@ -20,7 +20,7 @@
     <!-- PIN Screen -->
     <div id="loginScreen" class="admin-card" style="text-align: center;">
         <h2 style="color: #FFC01D; margin-bottom: 10px;"><i class="fa-solid fa-lock"></i> Staff Login</h2>
-        <p style="color: #94A3B8; font-size: 13px; margin-bottom: 20px;">Enter manager PIN (1234)</p>
+        <p style="color: #94A3B8; font-size: 13px; margin-bottom: 20px;">Enter manager PIN (2030)</p>
         <div class="form-group">
             <input type="password" id="pinInput" placeholder="Enter PIN" style="text-align: center; font-size: 18px; letter-spacing: 3px;">
         </div>
@@ -51,11 +51,12 @@
 
     <script>
         function verifyPin() {
-            if (document.getElementById("pinInput").value.trim() === "1234") {
+            // PIN changed to 2030 as requested
+            if (document.getElementById("pinInput").value.trim() === "2030") {
                 document.getElementById("loginScreen").classList.add("hidden");
                 document.getElementById("panelScreen").classList.remove("hidden");
             } else {
-                document.getElementById("loginError").innerText = "Incorrect PIN. Try 1234.";
+                document.getElementById("loginError").innerText = "Incorrect PIN. Try 2030.";
             }
         }
         function saveShipmentLocally() {
@@ -72,3 +73,4 @@
     </script>
 </body>
 </html>
+
