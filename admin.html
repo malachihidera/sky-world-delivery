@@ -17,29 +17,22 @@
 </head>
 <body>
 
-    <!-- PIN Login Screen -->
+    <!-- PIN Screen -->
     <div id="loginScreen" class="admin-card" style="text-align: center;">
         <h2 style="color: #FFC01D; margin-bottom: 10px;"><i class="fa-solid fa-lock"></i> Staff Login</h2>
-        <p style="color: #94A3B8; font-size: 13px; margin-bottom: 20px;">Enter manager PIN to access control panel.</p>
+        <p style="color: #94A3B8; font-size: 13px; margin-bottom: 20px;">Enter manager PIN (1234)</p>
         <div class="form-group">
-            <input type="password" id="pinInput" placeholder="Enter 4-digit PIN (1234)" style="text-align: center; font-size: 18px; letter-spacing: 3px;">
+            <input type="password" id="pinInput" placeholder="Enter PIN" style="text-align: center; font-size: 18px; letter-spacing: 3px;">
         </div>
         <button class="btn-action" onclick="verifyPin()">Unlock Panel</button>
         <div id="loginError" style="color: #ef4444; font-size: 13px; margin-top: 10px;"></div>
-        <div style="margin-top: 20px;">
-            <a href="index.html" style="color: #6392B2; text-decoration: none; font-size: 13px;">← Return to Homepage</a>
-        </div>
+        <div style="margin-top: 20px;"><a href="index.html" style="color: #6392B2; text-decoration: none; font-size: 13px;">← Return to Homepage</a></div>
     </div>
 
-    <!-- Actual Manager Panel (Hidden Until PIN is Correct) -->
+    <!-- Manager Panel -->
     <div id="panelScreen" class="admin-card hidden">
         <h2 style="text-align: center; margin-bottom: 20px; color: #FFC01D;">Manager Control Panel</h2>
-        
-        <div class="form-group">
-            <label>Tracking Number</label>
-            <input type="text" id="adminTrackingNum" placeholder="e.g. DLV796515470">
-        </div>
-        
+        <div class="form-group"><label>Tracking Number</label><input type="text" id="adminTrackingNum" placeholder="e.g. DLV123456789"></div>
         <div class="form-group">
             <label>Shipment Status</label>
             <select id="adminStatus">
@@ -50,52 +43,31 @@
                 <option value="Delivered">Delivered</option>
             </select>
         </div>
-
-        <div class="form-group">
-            <label>Destination</label>
-            <input type="text" id="adminDestination" placeholder="e.g. Mexico City">
-        </div>
-
+        <div class="form-group"><label>Destination</label><input type="text" id="adminDestination" placeholder="e.g. Mexico City"></div>
         <button class="btn-action" onclick="saveShipmentLocally()">Save Shipment</button>
         <div id="adminMessage" style="margin-top: 15px; text-align: center; font-size: 14px;"></div>
-        
-        <div style="text-align: center; margin-top: 20px;">
-            <a href="index.html" style="color: #6392B2; text-decoration: none; font-size: 13px;">← Exit to Public Site</a>
-        </div>
+        <div style="text-align: center; margin-top: 20px;"><a href="index.html" style="color: #6392B2; text-decoration: none; font-size: 13px;">← Exit to Public Site</a></div>
     </div>
 
     <script>
         function verifyPin() {
-            const pin = document.getElementById("pinInput").value.trim();
-            const errEl = document.getElementById("loginError");
-            if (pin === "1234") {
+            if (document.getElementById("pinInput").value.trim() === "1234") {
                 document.getElementById("loginScreen").classList.add("hidden");
                 document.getElementById("panelScreen").classList.remove("hidden");
             } else {
-                errEl.innerText = "Incorrect PIN. Try 1234.";
+                document.getElementById("loginError").innerText = "Incorrect PIN. Try 1234.";
             }
         }
-
         function saveShipmentLocally() {
             const trackingNumber = document.getElementById("adminTrackingNum").value.trim();
             const status = document.getElementById("adminStatus").value;
             const destination = document.getElementById("adminDestination").value.trim() || "International Hub";
             const msgEl = document.getElementById("adminMessage");
-
-            if (!trackingNumber) {
-                msgEl.innerHTML = `<span style="color:#ef4444;">Please enter a tracking number.</span>`;
-                return;
-            }
-
-            const shipmentData = {
-                tracking_number: trackingNumber,
-                status: status,
-                destination: destination,
-                weight: "4.5 kg"
-            };
-
+            if (!trackingNumber) { msgEl.innerHTML = `<span style="color:#ef4444;">Enter a tracking number.</span>`; return; }
+            
+            const shipmentData = { tracking_number: trackingNumber, status: status, destination: destination, weight: "4.5 kg" };
             localStorage.setItem("shipment_" + trackingNumber, JSON.stringify(shipmentData));
-            msgEl.innerHTML = `<span style="color:#10b981; font-weight:bold;">Successfully saved ${trackingNumber}!</span>`;
+            msgEl.innerHTML = `<span style="color:#10b981; font-weight:bold;">Saved ${trackingNumber}!</span>`;
         }
     </script>
 </body>
