@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sky World - Manager Control Panel</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Include Supabase Client Library -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body style="background: #0f172a; color: #fff; font-family: sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0;">
+
+  <!-- Passcode Screen -->
+  <div id="adminLockScreen" style="background: #1e293b; padding: 30px; border-radius: 12px; width: 100%; max-width: 400px; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
+    <h2 style="color: #38bdf8; margin-bottom: 20px;">Manager Login</h2>
+    <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 15px;">Enter your secret PIN to access controls:</p>
+    <input type="password" id="adminPasscode" placeholder="Enter PIN" style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #334155; background: #0f172a; color: #fff; text-align: center; font-size: 1.2rem; letter-spacing: 4px; box-sizing: border-box; margin-bottom: 15px;">
+    <button onclick="unlockAdmin()" style="width: 100%; padding: 12px; background: #38bdf8; color: #0f172a; font-weight: bold; border: none; border-radius: 6px; cursor: pointer;">Access Panel</button>
+    <p id="lockError" style="color: #ef4444; font-size: 0.85rem; margin-top: 10px;"></p>
+    <div style="margin-top: 20px;">
+      <a href="index.html" style="color: #94a3b8; font-size: 0.85rem; text-decoration: none;">&larr; Back to Client Website</a>
+    </div>
+  </div>
+
+  <!-- Protected Admin Form (Hidden by default) -->
+  <div id="adminContent" style="display: none; background: #1e293b; padding: 30px; border-radius: 12px; width: 100%; max-width: 500px; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
+    <h2 style="color: #38bdf8; text-align: center; margin-bottom: 20px;">Manager Control Panel</h2>
+    
+    <form id="adminUpdateForm" onsubmit="updateShipment(event)" style="display: flex; flex-direction: column; gap: 14px;">
+      <div>
+        <label style="font-size: 0.85rem; color: #94a3b8; display: block; margin-bottom: 5px;">Tracking Number to Update</label>
+        <input type="text" id="adminTrackingNum" placeholder="e.g. DLV123456789" required style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #334155; background: #0f172a; color: #fff; box-sizing: border-box;">
+      </div>
+
+      <div>
+        <label style="font-size: 0.85rem; color: #94a3b8; display: block; margin-bottom: 5px;">New Status</label>
+        <select id="adminStatus" style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #334155; background: #0f172a; color: #fff; box-sizing: border-box;">
+          <option value="Order Received">Order Received</option>
+          <option value="Picked Up">Picked Up</option>
+          <option value="In Transit">In Transit</option>
+          <option value="Out for Delivery">Out for Delivery</option>
+          <option value="Delivered">Delivered</option>
+        </select>
+      </div>
+
+      <div>
+        <label style="font-size: 0.85rem; color: #94a3b8; display: block; margin-bottom: 5px;">New Destination (Optional)</label>
+        <input type="text" id="adminDestination" placeholder="e.g. London, UK" style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #334155; background: #0f172a; color: #fff; box-sizing: border-box;">
+      </div>
+
+      <button type="submit" style="padding: 12px; background: #eab308; color: #0f172a; font-weight: bold; border: none; border-radius: 6px; cursor: pointer; margin-top: 5px;">Update Shipment</button>
+    </form>
+
+    <div id="adminFeedback" style="margin-top: 15px; text-align: center;"></div>
+    
+    <div style="text-align: center; margin-top: 20px;">
+      <a href="index.html" style="color: #94a3b8; font-size: 0.85rem; text-decoration: none;">&larr; Exit to Public Site</a>
+          <hr style="border: 0; border-top: 1px solid #334155; margin: 25px 0;">
+
+    <h3 style="color: #38bdf8; text-align: center; margin-bottom: 15px; font-size: 1.2rem;">Create New Shipment</h3>
+    
+    <form id="createShipmentForm" onsubmit="createShipment(event)" style="display: flex; flex-direction: column; gap: 14px;">
+      <div>
+        <label style="font-size: 0.85rem; color: #94a3b8; display: block; margin-bottom: 5px;">New Tracking Number</label>
+        <input type="text" id="newTrackingNum" placeholder="e.g. DLV987654321" required style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #334155; background: #0f172a; color: #fff; box-sizing: border-box;">
+      </div>
+
+      <div>
+        <label style="font-size: 0.85rem; color: #94a3b8; display: block; margin-bottom: 5px;">Initial Status</label>
+        <select id="newStatus" style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #334155; background: #0f172a; color: #fff; box-sizing: border-box;">
+          <option value="Order Received">Order Received</option>
+          <option value="Picked Up">Picked Up</option>
+          <option value="In Transit">In Transit</option>
+        </select>
+      </div>
+
+      <div>
+        <label style="font-size: 0.85rem; color: #94a3b8; display: block; margin-bottom: 5px;">Destination</label>
+        <input type="text" id="newDestination" placeholder="e.g. Kazakhstan, Astana" required style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #334155; background: #0f172a; color: #fff; box-sizing: border-box;">
+      </div>
+
+      <button type="submit" style="padding: 12px; background: #22c55e; color: #0f172a; font-weight: bold; border: none; border-radius: 6px; cursor: pointer; margin-top: 5px;">Create Shipment</button>
+    </form>
+
+    <div id="createFeedback" style="margin-top: 15px; text-align: center;"></div>
+    
+    </div>
+  </div>
+
+  <!-- Connect your shared script file -->
+  <script src="script.js"></script>
+  <script>
+    // Manager PIN Lock Logic
+    const MANAGER_PIN = "1234"; // 👈 Change this to your private PIN code
+
+    function unlockAdmin() {
+      const pin = document.getElementById("adminPasscode").value;
+      const errorEl = document.getElementById("lockError");
+      
+      if (pin === MANAGER_PIN) {
+        document.getElementById("adminLockScreen").style.display = "none";
+        document.getElementById("adminContent").style.display = "block";
+      } else {
+        errorEl.textContent = "Incorrect PIN code!";
+      }
+    }
+  </script>
+</body>
+</html>
+
