@@ -6,65 +6,38 @@
     <title>Sky World - Manager Control Panel</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
-        body {
-            background-color: #0A2540;
-            color: white;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .admin-card {
-            background: #1E293B;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-            width: 100%;
-            max-width: 400px;
-        }
-        .form-group {
-            margin-bottom: 15px;
-            text-align: left;
-        }
-        .form-group label {
-            display: block;
-            font-size: 13px;
-            margin-bottom: 5px;
-            color: #94A3B8;
-        }
-        .form-group input, .form-group select {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #475569;
-            background: #0F172A;
-            color: white;
-            border-radius: 6px;
-            font-size: 14px;
-        }
-        .btn-save {
-            background-color: #10B981;
-            color: white;
-            border: none;
-            padding: 12px;
-            width: 100%;
-            font-weight: bold;
-            border-radius: 6px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-        .btn-save:hover { opacity: 0.9; }
+        body { background-color: #0A2540; color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .admin-card { background: #1E293B; padding: 30px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); width: 100%; max-width: 400px; }
+        .form-group { margin-bottom: 15px; text-align: left; }
+        .form-group label { display: block; font-size: 13px; margin-bottom: 5px; color: #94A3B8; }
+        .form-group input, .form-group select { width: 100%; padding: 12px; border: 1px solid #475569; background: #0F172A; color: white; border-radius: 6px; box-sizing: border-box; font-size: 14px; }
+        .btn-action { background-color: #10B981; color: white; border: none; padding: 12px; width: 100%; font-weight: bold; border-radius: 6px; cursor: pointer; margin-top: 10px; }
+        .hidden { display: none !important; }
     </style>
 </head>
 <body>
 
-    <div class="admin-card">
+    <!-- PIN Login Screen -->
+    <div id="loginScreen" class="admin-card" style="text-align: center;">
+        <h2 style="color: #FFC01D; margin-bottom: 10px;"><i class="fa-solid fa-lock"></i> Staff Login</h2>
+        <p style="color: #94A3B8; font-size: 13px; margin-bottom: 20px;">Enter manager PIN to access control panel.</p>
+        <div class="form-group">
+            <input type="password" id="pinInput" placeholder="Enter 4-digit PIN (1234)" style="text-align: center; font-size: 18px; letter-spacing: 3px;">
+        </div>
+        <button class="btn-action" onclick="verifyPin()">Unlock Panel</button>
+        <div id="loginError" style="color: #ef4444; font-size: 13px; margin-top: 10px;"></div>
+        <div style="margin-top: 20px;">
+            <a href="index.html" style="color: #6392B2; text-decoration: none; font-size: 13px;">← Return to Homepage</a>
+        </div>
+    </div>
+
+    <!-- Actual Manager Panel (Hidden Until PIN is Correct) -->
+    <div id="panelScreen" class="admin-card hidden">
         <h2 style="text-align: center; margin-bottom: 20px; color: #FFC01D;">Manager Control Panel</h2>
         
         <div class="form-group">
             <label>Tracking Number</label>
-            <input type="text" id="adminTrackingNum" placeholder="e.g. DLV123456789">
+            <input type="text" id="adminTrackingNum" placeholder="e.g. DLV796515470">
         </div>
         
         <div class="form-group">
@@ -83,7 +56,7 @@
             <input type="text" id="adminDestination" placeholder="e.g. Mexico City">
         </div>
 
-        <button class="btn-save" onclick="saveShipmentLocally()">Save to Database</button>
+        <button class="btn-action" onclick="saveShipmentLocally()">Save Shipment</button>
         <div id="adminMessage" style="margin-top: 15px; text-align: center; font-size: 14px;"></div>
         
         <div style="text-align: center; margin-top: 20px;">
@@ -92,6 +65,17 @@
     </div>
 
     <script>
+        function verifyPin() {
+            const pin = document.getElementById("pinInput").value.trim();
+            const errEl = document.getElementById("loginError");
+            if (pin === "1234") {
+                document.getElementById("loginScreen").classList.add("hidden");
+                document.getElementById("panelScreen").classList.remove("hidden");
+            } else {
+                errEl.innerText = "Incorrect PIN. Try 1234.";
+            }
+        }
+
         function saveShipmentLocally() {
             const trackingNumber = document.getElementById("adminTrackingNum").value.trim();
             const status = document.getElementById("adminStatus").value;
@@ -103,7 +87,6 @@
                 return;
             }
 
-            // Save directly to browser storage
             const shipmentData = {
                 tracking_number: trackingNumber,
                 status: status,
