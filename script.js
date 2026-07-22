@@ -250,4 +250,4 @@ function sendChatMessage() {
         chatContainer.scrollTop = chatContainer.scrollHeight;
     }, 1000);
 }
-
+  
