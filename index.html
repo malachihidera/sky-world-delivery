@@ -13,8 +13,6 @@
             --light: #F8FAFC;
             --dark: #1E293B;
             --success: #10B981;
-           
-
         }
 
         * {
@@ -83,19 +81,12 @@
 
         /* Hero Section */
         .hero {
-    background: linear-gradient(rgba(10, 37, 64, 0.75), rgba(10, 37, 64, 0.75)), url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    color: white;
-    padding: 60px 20px;
-    text-align: center;
-}
-
+            background: linear-gradient(rgba(10, 37, 64, 0.75), rgba(10, 37, 64, 0.75)), url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80');
             background-size: cover;
             background-position: center;
+            background-repeat: no-repeat;
             color: white;
-            padding: 40px 20px;
+            padding: 60px 20px;
             text-align: center;
         }
 
@@ -146,9 +137,12 @@
             transition: 0.3s;
         }
 
-        /* Tracking Result */
+        .btn-primary:hover {
+            opacity: 0.9;
+        }
+
+        /* Tracking Result Box */
         #trackingResult {
-            display: none;
             margin-top: 20px;
             text-align: left;
             border-top: 2px dashed #E2E8F0;
@@ -199,7 +193,6 @@
             font-size: 22px;
             color: var(--primary);
             margin-bottom: 25px;
-            position: relative;
         }
 
         /* Services Grid */
@@ -224,7 +217,6 @@
             margin-bottom: 10px;
         }
 
-        /* Card & Form elements */
         .card {
             background: white;
             padding: 20px;
@@ -250,34 +242,6 @@
             border: 1px solid #CBD5E1;
             border-radius: 6px;
             font-size: 14px;
-        }
-
-        /* Admin Panel */
-        .admin-box {
-            background: #EFF6FF;
-            border: 2px dashed #3B82F6;
-            padding: 20px;
-            border-radius: 8px;
-            margin-top: 30px;
-        }
-
-        /* WhatsApp Button */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #25D366;
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 30px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            text-decoration: none;
-            z-index: 1000;
         }
 
         /* Footer */
@@ -319,9 +283,9 @@
                     <li><a href="#home">Home</a></li>
                     <li><a href="#track">Track</a></li>
                     <li><a href="#services">Services</a></li>
-                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#faq">FAQ</a></li>
                     <li><a href="#book">Book Delivery</a></li>
-                    <li><a href="#admin">Manager Panel</a></li>
+                    <li><a href="admin.html">Manager Panel</a></li>
                 </ul>
             </nav>
         </div>
@@ -335,59 +299,17 @@
         <!-- Tracking Card -->
         <div class="track-card" id="track">
             <h3 style="margin-bottom: 12px; color: var(--primary);"><i class="fas fa-search-location"></i> Track Your Shipment</h3>
-     <div class="track-input-group">
-  <input type="text" id="trackingInput" placeholder="e.g. DLV123456789">
-  <button class="btn-primary" onclick="trackPackage()">Track</button>
-</div>
+            <div class="track-input-group">
+                <input type="text" id="trackingInput" placeholder="e.g. DLV156879502">
+                <button class="btn-primary" onclick="trackPackage()">Track</button>
+            </div>
 
-<!-- MUST HAVE THIS EXACT ID FOR RESULTS TO DISPLAY -->
-<div id="trackingResult"></div>
-
-
-                <div id="trackingDetailsCard" style="display: none;">
-    <p><strong>Tracking ID:</strong> <span id="resCode">DLV123456789</span></p>
-    <p>Destination: <span id="displayDestination">Kazakhstan, Astana</span></p>
-    <p><strong>Package Weight:</strong> <span id="resWeight">4.5 kg</span></p>
-    
-    <!-- Line 353 starts here, now safely inside the card wrapper -->
-    <div class="status-timeline">
-        <div class="status-step active" id="step1">
-            <h4>Order Received</h4>
-            <small>Package registration completed.</small>
+            <!-- Results Section Populated by script.js -->
+            <div id="trackingResult"></div>
         </div>
-        <div class="status-step" id="step2">
-            <h4>Picked Up</h4>
-            <small>Item retrieved by dispatch team.</small>
-        </div>
-        <div class="status-step" id="step3">
-            <h4>In Transit</h4>
-            <small>Departed sorting hub / Custom clearance ongoing.</small>
-        </div>
-        <div class="status-step" id="step4">
-            <h4>Out for Delivery</h4>
-            <small>Assigned to courier agent.</small>
-        </div>
-        <div class="status-step" id="step5">
-            <h4>Delivered</h4>
-            <small>Signed and received by recipient.</small>
-        </div>
-    </div>
-
-    <div style="background: #FEF3C7; padding: 10px; border-radius: 6px; border-left: 4px solid var(--accent); font-size: 13px;">
-        <strong>Customs Note:</strong> Standard customs fee & documentation clearance pending destination release.
-    </div>
-</div>
-
-    </div>
-</div>
-
-</div> <!-- This closes your #trackingDetailsCard -->
-</section>
-
     </section>
 
     <div class="container">
-
         <!-- Services -->
         <h2 class="section-title" id="services">Our Logistics Services</h2>
         <div class="services-grid">
@@ -415,8 +337,6 @@
 
         <br><hr><br>
 
-        
-
         <!-- Book Delivery Form -->
         <h2 class="section-title" id="book">Book a Package Delivery</h2>
         <div class="card">
@@ -438,47 +358,18 @@
                 </button>
             </form>
         </div>
-
-     <div id="paymentDetailsCard" style="display: none; background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin: 20px 0;">
-    <h3 style="color: var(--primary); margin-bottom: 10px;"><i class="fa-solid fa-credit-card"></i> Payment Instructions</h3>
-    <p id="displayPaymentInfo" style="font-size: 15px; color: #333; line-height: 1.6; white-space: pre-line;"></p>
-    <button onclick="clearPaymentInfo()" style="background: #ef4444; color: white; border: none; padding: 8px 15px; border-radius: 6px; margin-top: 10px; cursor: pointer;">Remove Payment Info</button>
-</div>
-<!-- Client Email / Message Dispatcher -->
-<div class="card" style="margin-top: 20px; border-left: 4px solid var(--accent);">
-    <h3 style="color: var(--primary); margin-bottom: 10px;"><i class="fa-solid fa-envelope"></i> Send Update / Message to Client</h3>
-    <p style="font-size: 13px; color: #64748B; margin-bottom: 15px;">Send a direct email message regarding a specific tracking ID to your client's inbox.</p>
-    
-    <div class="form-group">
-        <label>Client Email Address</label>
-        <input type="email" id="clientEmailInput" placeholder="client@example.com">
     </div>
-    
-    <div class="form-group">
-        <label>Message / Update Details</label>
-        <textarea id="clientMessageInput" rows="4" placeholder="Type your message, payment instructions, or clearance update here..." style="width: 100%; padding: 12px; border: 1px solid #CBD5E1; border-radius: 6px; font-family: inherit; font-size: 14px;"></textarea>
-    </div>
-    
-    <button onclick="sendClientEmail()" class="btn-primary" style="width: 100%; cursor: pointer;">Send Email to Client</button>
-</div>
 
-
-    <!-- Floating Contact Buttons (WhatsApp & Email) -->
-<div style="position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; gap: 10px; z-index: 1000;">
-    <!-- Email Floating Button -->
-    <a href="mailto:trackskyworld@gmail.com" target="_blank" style="background: #2563EB; color: white; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); text-decoration: none;">
-        <i class="fa-solid fa-envelope"></i>
-    </a>
-    
-    <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/2348120067056?text=Hello%20Manager,%20I%20have%20an%20inquiry%20about%20a%20package." class="whatsapp-float" target="_blank" style="position: static; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-</div>
-
-  <!-- Manager Panel Section -->
- 
-  
+    <!-- FAQ Section -->
+    <section id="faq" style="padding: 40px 20px; background: white; border-top: 1px solid #E2E8F0;">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <h2 style="text-align: center; color: var(--primary); margin-bottom: 25px;">Frequently Asked Questions</h2>
+            <div style="background: var(--light); padding: 15px; border-radius: 8px; margin-bottom: 10px;">
+                <h4 style="color: var(--primary); margin-bottom: 5px;">How do I track my shipment?</h4>
+                <p style="font-size: 14px; color: #475569;">Enter your tracking ID into the search bar at the top of the homepage to view real-time status updates.</p>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer>
@@ -487,57 +378,21 @@
             <p><i class="fas fa-map-marker-alt"></i> <strong>Head Office:</strong> 14 Hanover Square, Mayfair, London W1S 1HP, United Kingdom</p>
             <p><i class="fas fa-id-badge"></i> <strong>Registration Number:</strong> RC 8475621</p>
             <p><i class="fas fa-envelope"></i> <strong>Email Support:</strong> trackskyworld@gmail.com</p>
-            <p><i class="fas fa-globe"></i> <strong>Official Web Address:</strong> www.skyworlddeliverycompany.com</p>
         </div>
         <div class="footer-bottom">
             <p>&copy; 2026 Sky World Delivery Company. All Rights Reserved.</p>
         </div>
     </footer>
 
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/2348120067056?text=Hello%20Manager,%20I%20have%20an%20inquiry%20about%20a%20package." class="whatsapp-float" target="_blank" style="position: fixed; bottom: 20px; right: 20px; background-color: #25D366; color: white; width: 55px; height: 55px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 28px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); text-decoration: none; z-index: 1000;">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
     <!-- Load Supabase Library -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- Load External JavaScript File -->
+    <script src="script.js"></script>
+</body>
+</html>
 
-<!-- Load External JavaScript File -->
-<script src="script.js"></script>
-<!-- === COMPLETE NEW FEATURES BLOCK === -->
-
-<!-- 1. Accepted Payment Methods Section -->
-<section style="padding: 40px 20px; background: #fff; text-align: center; border-top: 1px solid #E2E8F0;">
-    <h3 style="color: var(--primary); margin-bottom: 20px;"><i class="fa-solid fa-shield-halved"></i> Secure & Accepted Payment Methods</h3>
-    <div style="display: flex; justify-content: center; gap: 30px; font-size: 36px; color: #1E293B; flex-wrap: wrap; align-items: center;">
-        <i class="fa-brands fa-cc-visa" title="Visa" style="color: #1A1F71;"></i>
-        <i class="fa-brands fa-cc-mastercard" title="Mastercard" style="color: #EB001B;"></i>
-        <i class="fa-brands fa-paypal" title="PayPal" style="color: #003087;"></i>
-        <i class="fa-solid fa-building-columns" title="Bank Transfer" style="color: #0F172A;"></i>
-    </div>
-</section>
-
-<!-- 2. FAQ Section -->
-<section id="faq" style="padding: 50px 20px; background: var(--light);">
-    <div style="max-width: 800px; margin: 0 auto;">
-        <h2 style="text-align: center; color: var(--primary); margin-bottom: 30px;">Frequently Asked Questions</h2>
-        
-        <div style="background: white; padding: 20px; border-radius: 8px; margin-bottom: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-            <h4 style="color: var(--primary); margin-bottom: 8px;"><i class="fa-solid fa-circle-question" style="color: var(--accent);"></i> How do I track my shipment?</h4>
-            <p style="color: #475569; font-size: 14px;">Simply enter your unique tracking ID into the search or tracking bar at the top of the homepage to view live status updates instantly.</p>
-        </div>
-        
-        <div style="background: white; padding: 20px; border-radius: 8px; margin-bottom: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-            <h4 style="color: var(--primary); margin-bottom: 8px;"><i class="fa-solid fa-circle-question" style="color: var(--accent);"></i> How long does international delivery take?</h4>
-            <p style="color: #475569; font-size: 14px;">Standard international shipping typically takes between 3 to 7 business days depending on destination customs clearance procedures.</p>
-        </div>
-        
-        <div style="background: white; padding: 20px; border-radius: 8px; margin-bottom: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-            <h4 style="color: var(--primary); margin-bottom: 8px;"><i class="fa-solid fa-circle-question" style="color: var(--accent);"></i> What items are prohibited?</h4>
-            <p style="color: #475569; font-size: 14px;">Prohibited items include hazardous materials, explosives, illegal substances, and unapproved restricted chemicals or perishable goods.</p>
-        </div>
-    </div>
-</section>
-
-<!-- 3. Customer Portal / Dashboard Section -->
-<section id="dashboard" style="padding: 50px 20px; background: white; border-top: 1px solid #E2E8F0;">
-    <div style="max-width: 900px; margin: 0 auto;" class="card">
-        <h2 style="color: var(--primary); margin-bottom: 15px;"><i class="fa-solid fa-user-gear"></i> Customer Portal Dashboard</h2>
-        <p style="color: #64748B; font-size: 14px; margin-bottom: 25px;">Log in to access your complete shipment history, download invoices, and manage your account profile.</p>
-        
-        <div style="display: grid; grid-templat
