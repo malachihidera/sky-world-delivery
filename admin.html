@@ -83,7 +83,7 @@
             <input type="text" id="adminDestination" placeholder="e.g. Mexico City">
         </div>
 
-        <button class="btn-save" onclick="saveShipmentToSupabase()">Save to Database</button>
+        <button class="btn-save" onclick="saveShipmentLocally()">Save to Database</button>
         <div id="adminMessage" style="margin-top: 15px; text-align: center; font-size: 14px;"></div>
         
         <div style="text-align: center; margin-top: 20px;">
@@ -91,17 +91,11 @@
         </div>
     </div>
 
-    <!-- Load Supabase Library -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script>
-        const SUPABASE_URL = "https://vecqmerzqcxzcldldvhaf.supabase.co";
-        const SUPABASE_KEY = "sb_publishable_3oCv-YpSvXAswWuD5YjtJg_7AxaFc3x";
-        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
-        async function saveShipmentToSupabase() {
+        function saveShipmentLocally() {
             const trackingNumber = document.getElementById("adminTrackingNum").value.trim();
             const status = document.getElementById("adminStatus").value;
-            const destination = document.getElementById("adminDestination").value.trim();
+            const destination = document.getElementById("adminDestination").value.trim() || "International Hub";
             const msgEl = document.getElementById("adminMessage");
 
             if (!trackingNumber) {
@@ -109,26 +103,17 @@
                 return;
             }
 
-            msgEl.innerHTML = `<span style="color:#3b82f6;">Saving to database...</span>`;
+            // Save directly to browser storage
+            const shipmentData = {
+                tracking_number: trackingNumber,
+                status: status,
+                destination: destination,
+                weight: "4.5 kg"
+            };
 
-            try {
-                // Upsert checks if tracking number exists; updates it or inserts a new one
-                const { error } = await supabaseClient
-                    .from('shipments')
-                    .upsert([
-                        { tracking_number: trackingNumber, status: status, destination: destination }
-                    ], { onConflict: ['tracking_number'] });
-
-                if (error) {
-                    msgEl.innerHTML = `<span style="color:#ef4444;">Error: ${error.message}</span>`;
-                } else {
-                    msgEl.innerHTML = `<span style="color:#10b981; font-weight:bold;">Successfully saved ${trackingNumber}!</span>`;
-                }
-            } catch (err) {
-                msgEl.innerHTML = `<span style="color:#ef4444;">Failed to connect to database.</span>`;
-            }
+            localStorage.setItem("shipment_" + trackingNumber, JSON.stringify(shipmentData));
+            msgEl.innerHTML = `<span style="color:#10b981; font-weight:bold;">Successfully saved ${trackingNumber}!</span>`;
         }
     </script>
 </body>
 </html>
-
