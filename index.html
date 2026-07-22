@@ -48,7 +48,7 @@
         .form-group label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 5px; }
         .form-group input, .form-group textarea { width: 100%; padding: 10px; border: 1px solid #CBD5E1; border-radius: 6px; font-size: 14px; box-sizing: border-box; }
 
-        /* Floating Contact Icons */
+        /* Floating Direct Contact Icons */
         .floating-icons { position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; gap: 12px; z-index: 999; }
         .float-btn { width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; font-size: 24px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); text-decoration: none; transition: transform 0.2s; }
         .float-btn:hover { transform: scale(1.1); }
@@ -116,15 +116,6 @@
                 <div class="form-group"><label>Package Description & Weight</label><input type="text" id="pkgDetails" placeholder="e.g. Documents, 2.5kg" required></div>
                 <button type="submit" class="btn-primary" style="width: 100%;"><i class="fab fa-whatsapp"></i> Send Order Details to Manager</button>
             </form>
-        </div>
-
-        <!-- Manager Client Email Dispatcher -->
-        <div class="card" style="border-left: 4px solid var(--accent);">
-            <h3 style="color: var(--primary); margin-bottom: 10px;"><i class="fa-solid fa-envelope"></i> Send Update / Message to Client</h3>
-            <p style="font-size: 13px; color: #64748B; margin-bottom: 15px;">Send a direct email message regarding a specific tracking ID to your client's inbox.</p>
-            <div class="form-group"><label>Client Email Address</label><input type="email" id="clientEmailInput" placeholder="client@example.com"></div>
-            <div class="form-group"><label>Message / Update Details</label><textarea id="clientMessageInput" rows="3" placeholder="Type your clearance update here..."></textarea></div>
-            <button onclick="sendClientEmail()" class="btn-primary" style="width: 100%;">Send Email to Client</button>
         </div>
     </div>
 
