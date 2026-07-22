@@ -1,409 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> 
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sky World Delivery Company | Global Logistics</title>
+    <title>Sky World Delivery - Global Express Services</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
-        :root {
-            --primary: #0A2540;
-            --accent: #FFC01D;
-            --secondary: #6392B2;
-            --light: #F8FAFC;
-            --dark: #1E293B;
-            --success: #10B981;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: var(--light);
-            color: var(--dark);
-            line-height: 1.6;
-        }
-
-        /* Header & Nav */
-        header {
-            background-color: var(--primary);
-            color: white;
-            padding: 15px 20px;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .top-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 13px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding-bottom: 8px;
-            margin-bottom: 10px;
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 20px;
-            font-weight: bold;
-            color: var(--accent);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 15px;
-            overflow-x: auto;
-            padding-bottom: 5px;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-size: 14px;
-            white-space: nowrap;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(10, 37, 64, 0.75), rgba(10, 37, 64, 0.75)), url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            color: white;
-            padding: 60px 20px;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 28px;
-            margin-bottom: 10px;
-        }
-
-        .hero p {
-            font-size: 14px;
-            margin-bottom: 25px;
-            color: #CBD5E1;
-        }
-
-        /* Tracking Card */
-        .track-card {
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            color: var(--dark);
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        .track-input-group {
-            display: flex;
-            gap: 8px;
-        }
-
-        .track-input-group input {
-            flex: 1;
-            padding: 12px;
-            border: 2px solid #E2E8F0;
-            border-radius: 6px;
-            font-size: 15px;
-            outline: none;
-        }
-
-        .btn-primary {
-            background-color: var(--accent);
-            color: var(--primary);
-            border: none;
-            padding: 12px 20px;
-            font-weight: bold;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .btn-primary:hover {
-            opacity: 0.9;
-        }
-
-        #trackingResult {
-            margin-top: 20px;
-            text-align: left;
-            border-top: 2px dashed #E2E8F0;
-            padding-top: 15px;
-        }
-
-        /* Main Container */
-        .container {
-            padding: 30px 20px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 22px;
-            color: var(--primary);
-            margin-bottom: 25px;
-        }
-
-        /* Services Grid */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 15px;
-        }
-
-        .service-card {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            text-align: center;
-            border-bottom: 3px solid var(--accent);
-        }
-
-        .service-card i {
-            font-size: 30px;
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-
-        .card {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 25px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 13px;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .form-group input, .form-group select, .form-group textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #CBD5E1;
-            border-radius: 6px;
-            font-size: 14px;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--primary);
-            color: white;
-            padding: 30px 20px 15px;
-            font-size: 13px;
-        }
-
-        .footer-info p {
-            margin-bottom: 8px;
-            color: #94A3B8;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            margin-top: 20px;
-            padding-top: 15px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            color: #64748B;
-        }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; background: #f8fafc; color: #1e293b; }
+        header { background: #0A2540; color: white; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-weight: bold; font-size: 20px; color: #FFC01D; }
+        nav a { color: white; text-decoration: none; margin-left: 20px; font-size: 14px; }
+        .hero { background: linear-gradient(rgba(10,37,64,0.8), rgba(10,37,64,0.8)), url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80') center/cover; padding: 60px 20px; text-align: center; color: white; }
+        .track-box { background: white; padding: 25px; border-radius: 12px; max-width: 500px; margin: 0 auto; box-shadow: 0 10px 25px rgba(0,0,0,0.2); color: #1e293b; }
+        .track-box input { width: 70%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px 0 0 6px; font-size: 14px; outline: none; }
+        .track-box button { width: 28%; padding: 12px; background: #FFC01D; border: none; font-weight: bold; border-radius: 0 6px 6px 0; cursor: pointer; color: #0A2540; }
+        .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
+        .section-title { text-align: center; margin-bottom: 30px; font-size: 24px; color: #0A2540; }
+        .booking-card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; font-size: 13px; margin-bottom: 5px; font-weight: bold; color: #475569; }
+        .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; box-sizing: border-box; }
+        .btn-book { background: #FFC01D; color: #0A2540; border: none; padding: 14px; width: 100%; font-weight: bold; border-radius: 6px; cursor: pointer; font-size: 15px; }
     </style>
 </head>
 <body>
 
-    <!-- Header Navigation -->
     <header>
-        <div class="top-bar">
-            <span><i class="fas fa-id-card"></i> Reg: <strong>RC 8475621</strong></span>
-            <span><i class="fas fa-envelope"></i> trackskyworld@gmail.com</span>
-        </div>
-        <div class="nav-container">
-            <div class="logo">
-                <i class="fas fa-plane-departure"></i> SKY WORLD
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#track">Track</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#faq">FAQ</a></li>
-                    <li><a href="#book">Book Delivery</a></li>
-                    <li><a href="admin.html">Manager Panel</a></li>
-                </ul>
-            </nav>
-        </div>
+        <div class="logo"><i class="fa-solid fa-plane-departure"></i> SKY WORLD</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="admin.html">Staff Login</a>
+        </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
+    <div class="hero">
         <h1>Global Express Delivery Services</h1>
         <p>Reliable, Fast, and Secure Freight & Courier Solutions Worldwide.</p>
-
-        <!-- Tracking Card -->
-        <div class="track-card" id="track">
-            <h3 style="margin-bottom: 12px; color: var(--primary);"><i class="fas fa-search-location"></i> Track Your Shipment</h3>
-            <div class="track-input-group">
-                <input type="text" id="trackingInput" placeholder="e.g. DLV156879502">
-                <button class="btn-primary" onclick="trackPackage()">Track</button>
+        
+        <div class="track-box">
+            <h3><i class="fa-solid fa-magnifying-glass"></i> Track Your Shipment</h3>
+            <div style="display: flex; justify-content: center; margin-top: 15px;">
+                <input type="text" id="trackingInput" placeholder="Enter Tracking ID (e.g. DLV12345)">
+                <button onclick="trackPackage()">Track</button>
             </div>
-
-            <!-- Results Section Populated by script.js -->
-            <div id="trackingResult"></div>
+            <div id="trackingResult" style="margin-top: 15px;"></div>
         </div>
-    </section>
+    </div>
 
     <div class="container">
-        <!-- Services -->
-        <h2 class="section-title" id="services">Our Logistics Services</h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <i class="fas fa-truck"></i>
-                <h3>Local & Nationwide</h3>
-                <p>Fast door-to-door doorstep pickup and delivery across the country.</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-globe-americas"></i>
-                <h3>International Shipping</h3>
-                <p>Global freight, customs clearance processing, and air cargo solutions.</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-bolt"></i>
-                <h3>Same-Day & Express</h3>
-                <p>Priority rush deliveries guaranteed within hours.</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-warehouse"></i>
-                <h3>Warehouse & Storage</h3>
-                <p>Secure inventory management and temporary parcel storage services.</p>
-            </div>
-        </div>
-
-        <br><hr><br>
-
-        <!-- Book Delivery Form -->
-        <h2 class="section-title" id="book">Book a Package Delivery</h2>
-        <div class="card">
-            <form id="bookingForm" onsubmit="sendBookingToWhatsApp(event)">
+        <h2 class="section-title">Book a Package Delivery</h2>
+        <div class="booking-card">
+            <form onsubmit="sendBookingToWhatsApp(event)">
                 <div class="form-group">
                     <label>Your Full Name</label>
-                    <input type="text" id="custName" placeholder="John Doe" required>
+                    <input type="text" id="custName" placeholder="e.g. John Doe" required>
                 </div>
                 <div class="form-group">
                     <label>Pickup & Delivery Address</label>
-                    <textarea id="addresses" rows="3" placeholder="Pickup Address -> Recipient Address" required></textarea>
+                    <input type="text" id="addresses" placeholder="Sender Address -> Recipient Address" required>
                 </div>
                 <div class="form-group">
                     <label>Package Description & Weight</label>
                     <input type="text" id="pkgDetails" placeholder="e.g. Box of Documents, 2.5kg" required>
                 </div>
-                <button type="submit" class="btn-primary" style="width: 100%;">
-                    <i class="fab fa-whatsapp"></i> Send Order Details to Manager
-                </button>
+                <button type="submit" class="btn-book"><i class="fa-brands fa-whatsapp"></i> Send Order Details to Manager</button>
             </form>
         </div>
-
-        <!-- Client Email / Message Dispatcher -->
-        <div class="card" style="border-left: 4px solid var(--accent);">
-            <h3 style="color: var(--primary); margin-bottom: 10px;"><i class="fa-solid fa-envelope"></i> Send Update / Message to Client</h3>
-            <p style="font-size: 13px; color: #64748B; margin-bottom: 15px;">Send a direct email message regarding a specific tracking ID to your client's inbox.</p>
-            
-            <div class="form-group">
-                <label>Client Email Address</label>
-                <input type="email" id="clientEmailInput" placeholder="client@example.com">
-            </div>
-            
-            <div class="form-group">
-                <label>Message / Update Details</label>
-                <textarea id="clientMessageInput" rows="4" placeholder="Type your message, payment instructions, or clearance update here..."></textarea>
-            </div>
-            
-            <button onclick="sendClientEmail()" class="btn-primary" style="width: 100%; cursor: pointer;">Send Email to Client</button>
-        </div>
     </div>
 
-    <!-- Accepted Payment Methods Section -->
-    <section style="padding: 40px 20px; background: #fff; text-align: center; border-top: 1px solid #E2E8F0;">
-        <h3 style="color: var(--primary); margin-bottom: 20px;"><i class="fa-solid fa-shield-halved"></i> Secure & Accepted Payment Methods</h3>
-        <div style="display: flex; justify-content: center; gap: 30px; font-size: 36px; color: #1E293B; flex-wrap: wrap; align-items: center;">
-            <i class="fa-brands fa-cc-visa" title="Visa" style="color: #1A1F71;"></i>
-            <i class="fa-brands fa-cc-mastercard" title="Mastercard" style="color: #EB001B;"></i>
-            <i class="fa-brands fa-paypal" title="PayPal" style="color: #003087;"></i>
-            <i class="fa-solid fa-building-columns" title="Bank Transfer" style="color: #0F172A;"></i>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section id="faq" style="padding: 50px 20px; background: var(--light);">
-        <div style="max-width: 800px; margin: 0 auto;">
-            <h2 style="text-align: center; color: var(--primary); margin-bottom: 30px;">Frequently Asked Questions</h2>
-            
-            <div style="background: white; padding: 20px; border-radius: 8px; margin-bottom: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-                <h4 style="color: var(--primary); margin-bottom: 8px;"><i class="fa-solid fa-circle-question" style="color: var(--accent);"></i> How do I track my shipment?</h4>
-                <p style="color: #475569; font-size: 14px;">Simply enter your unique tracking ID into the search or tracking bar at the top of the homepage to view live status updates instantly.</p>
-            </div>
-            
-            <div style="background: white; padding: 20px; border-radius: 8px; margin-bottom: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-                <h4 style="color: var(--primary); margin-bottom: 8px;"><i class="fa-solid fa-circle-question" style="color: var(--accent);"></i> How long does international delivery take?</h4>
-                <p style="color: #475569; font-size: 14px;">Standard international shipping typically takes between 3 to 7 business days depending on destination customs clearance procedures.</p>
-            </div>
-            
-            <div style="background: white; padding: 20px; border-radius: 8px; margin-bottom: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-                <h4 style="color: var(--primary); margin-bottom: 8px;"><i class="fa-solid fa-circle-question" style="color: var(--accent);"></i> What items are prohibited?</h4>
-                <p style="color: #475569; font-size: 14px;">Prohibited items include hazardous materials, explosives, illegal substances, and unapproved restricted chemicals or perishable goods.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-info">
-            <h3>Sky World Delivery Company</h3>
-            <p><i class="fas fa-map-marker-alt"></i> <strong>Head Office:</strong> 14 Hanover Square, Mayfair, London W1S 1HP, United Kingdom</p>
-            <p><i class="fas fa-id-badge"></i> <strong>Registration Number:</strong> RC 8475621</p>
-            <p><i class="fas fa-envelope"></i> <strong>Email Support:</strong> trackskyworld@gmail.com</p>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Sky World Delivery Company. All Rights Reserved.</p>
-        </div>
-    </footer>
-
-    <!-- Floating Contact Buttons (WhatsApp & Email) -->
-    <div style="position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; gap: 10px; z-index: 1000;">
-        <a href="mailto:trackskyworld@gmail.com" target="_blank" style="background: #2563EB; color: white; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); text-decoration: none;">
-            <i class="fa-solid fa-envelope"></i>
-        </a>
-        <a href="https://wa.me/2348120067056?text=Hello%20Manager,%20I%20have%20an%20inquiry%20about%20a%20package." target="_blank" style="background-color: #25D366; color: white; width: 55px; height: 55px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 28px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); text-decoration: none;">
-            <i class="fab fa-whatsapp"></i>
-        </a>
-    </div>
-
-    <!-- Load Supabase Library -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <!-- Load External JavaScript File -->
     <script src="script.js"></script>
 </body>
 </html>
