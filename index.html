@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VEXEL & CO. | Creative Brand & Performance Agency</title>
+  <style>
+    /* RESET & BASE STYLES */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    :root {
+      --bg-dark: #0a0a0c;
+      --bg-card: #121216;
+      --accent: #ff3366;
+      --text-main: #f0f0f5;
+      --text-muted: #a0a0b0;
+      --border-color: #22222d;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* NAVIGATION */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(10, 10, 12, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      z-index: 1000;
+      padding: 1.2rem 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: #fff;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    nav a {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--text-main);
+    }
+
+    .btn-cta {
+      background-color: var(--accent);
+      color: #fff;
+      padding: 0.6rem 1.4rem;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      transition: opacity 0.3s, transform 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-cta:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
+
+    /* HERO SECTION */
+    .hero {
+      padding: 12rem 8% 6rem;
+      min-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      background: radial-gradient(circle at 80% 20%, rgba(255, 51, 102, 0.12) 0%, transparent 50%);
+    }
+
+    .hero-badge {
+      background: rgba(255, 51, 102, 0.1);
+      border: 1px solid rgba(255, 51, 102, 0.3);
+      color: var(--accent);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 900;
+      line-height: 1.1;
+      max-width: 900px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin-bottom: 2.5rem;
+    }
+
+    /* SERVICES SECTION */
+    .section {
+      padding: 6rem 8%;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-subtitle {
+      color: var(--text-muted);
+      margin-bottom: 3rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .service-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      padding: 2.5rem 2rem;
+      border-radius: 8px;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .service-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-5px);
+    }
+
+    .service-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+    }
+
+    .service-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* WORK / PORTFOLIO */
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .work-card {
+      background: var(--bg-card);
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
+
+    .work-img {
+      width: 100%;
+      height: 220px;
+      background-color: #1a1a24;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    .work-info {
+      padding: 1.5rem;
+    }
+
+    .work-category {
+      color: var(--accent);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .work-title {
+      font-size: 1.2rem;
+      margin: 0.3rem 0;
+    }
+
+    /* CONTACT SECTION */
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+
+    @media (max-width: 768px) {
+      .contact-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-muted);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      color: var(--text-main);
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--accent);
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 3rem 8%;
+      border-top: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">VEXEL<span>.</span></div>
+    <nav>
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <a href="#contact" class="btn-cta">Start a Project</a>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-badge">Next-Gen Creative Agency</div>
+    <h1>WE TURN NOISE INTO DOMINANCE.</h1>
+    <p>High-impact brand positioning, creative production, and full-funnel media strategies for brands built to scale.</p>
+    <a href="#work" class="btn-cta" style="padding: 0.9rem 2rem; font-size: 1rem;">View Selected Work</a>
+  </section>
+
+  <!-- SERVICES SECTION -->
+  <section class="section" id="services">
+    <h2 class="section-title">Our Capabilities</h2>
+    <p class="section-subtitle">Data-backed creativity engineered for market leadership.</p>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <h3>01 / Brand Strategy</h3>
+        <p>Positioning, identity architecture, and verbal branding designed to make your company unmistakable in crowded markets.</p>
+      </div>
+      <div class="service-card">
+        <h3>02 / Media Production</h3>
+        <p>Short-form vertical content, commercial video assets, high-converting visual design, and dynamic ad creative.</p>
+      </div>
+      <div class="service-card">
+        <h3>03 / Performance Ads</h3>
+        <p>Targeted multi-channel acquisition campaigns focused on aggressive ROI, audience retargeting, and conversion optimization.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK SECTION -->
+  <section class="section" id="work">
+    <h2 class="section-title">Selected Work</h2>
+    <p class="section-subtitle">A look at recent brand transformations and growth campaigns.</p>
+
+    <div class="work-grid">
+      <div class="work-card">
+        <div class="work-img">[ REBRAND CAMPAIGN ]</div>
+        <div class="work-info">
+          <div class="work-category">Brand Identity</div>
+          <div class="work-title">AURA Tech Ecosystem</div>
+        </div>
+      </div>
+      <div class="work-card">
+        <div class="work-img">[ PERFORMANCE CREATIVE ]</div>
+        <div class="work-info">
+          <div class="work-category">Paid Social</div>
+          <div class="work-title">KINETIC Fitness Launch</div>
+        </div>
+      </div>
+      <div class="work-card">
+        <div class="work-img">[ CONTENT PRODUCTION ]</div>
+        <div class="work-info">
+          <div class="work-category">Video Strategy</div>
+          <div class="work-title">Urban Form Outerwear</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section class="section" id="contact">
+    <div class="contact-container">
+      <div>
+        <h2 class="section-title">Let’s Build Something Bold.</h2>
+        <p class="section-subtitle">Ready to scale your brand? Reach out to schedule a strategy call with our creative leads.</p>
+      </div>
+      <form onsubmit="event.preventDefault(); alert('Message sent!');">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" placeholder="John Doe" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="john@company.com" required />
+        </div>
+        <div class="form-group">
+          <label for="message">Project Details</label>
+          <textarea id="message" rows="4" placeholder="Tell us about your project goals and timeline..."></textarea>
+        </div>
+        <button type="submit" class="btn-cta" style="width: 100%;">Send Proposal Request</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>&copy; 2026 VEXEL & CO. All rights reserved.</div>
+    <div>Built for high-growth brands.</div>
+  </footer>
+
+</body>
+</html>
+
