@@ -2,7 +2,7 @@
 const SUPABASE_URL = "https://vecqmerzqcxzcldldvhaf.supabase.co";
 const SUPABASE_KEY = "sb_publishable_3oCv-YpSvXAswWuD5YjtJg_7AxaFc3x";
 const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
+  
 // 2. Public Tracking Function
 async function trackPackage() {
     const inputEl = document.getElementById("trackingInput") || document.getElementById("trackingNum");
