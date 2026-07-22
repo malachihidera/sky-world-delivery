@@ -6,11 +6,11 @@
     <title>Sky World - Manager Control Panel</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
-        body { background-color: #0A2540; color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        .admin-card { background: #1E293B; padding: 30px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); width: 100%; max-width: 400px; }
-        .form-group { margin-bottom: 15px; text-align: left; }
-        .form-group label { display: block; font-size: 13px; margin-bottom: 5px; color: #94A3B8; }
-        .form-group input, .form-group select { width: 100%; padding: 12px; border: 1px solid #475569; background: #0F172A; color: white; border-radius: 6px; box-sizing: border-box; font-size: 14px; }
+        body { background-color: #0A2540; color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; padding: 20px; }
+        .admin-card { background: #1E293B; padding: 30px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); width: 100%; max-width: 450px; }
+        .form-group { margin-bottom: 12px; text-align: left; }
+        .form-group label { display: block; font-size: 12px; margin-bottom: 4px; color: #94A3B8; }
+        .form-group input, .form-group select { width: 100%; padding: 10px; border: 1px solid #475569; background: #0F172A; color: white; border-radius: 6px; box-sizing: border-box; font-size: 13px; }
         .btn-action { background-color: #10B981; color: white; border: none; padding: 12px; width: 100%; font-weight: bold; border-radius: 6px; cursor: pointer; margin-top: 10px; }
         .hidden { display: none !important; }
     </style>
@@ -31,22 +31,30 @@
 
     <!-- Manager Panel -->
     <div id="panelScreen" class="admin-card hidden">
-        <h2 style="text-align: center; margin-bottom: 20px; color: #FFC01D;">Manager Control Panel</h2>
-        <div class="form-group"><label>Tracking Number</label><input type="text" id="adminTrackingNum" placeholder="e.g. DLV123456789"></div>
+        <h2 style="text-align: center; margin-bottom: 15px; color: #FFC01D; font-size: 18px;">Manager Control Panel</h2>
+        
+        <div class="form-group"><label>Tracking Number</label><input type="text" id="adminTrackingNum" placeholder="e.g. DLV178294760"></div>
+        <div class="form-group"><label>Sender Full Name</label><input type="text" id="adminSenderName" placeholder="e.g. Robert Fox"></div>
+        <div class="form-group"><label>Sender Location (Origin)</label><input type="text" id="adminSenderLoc" placeholder="e.g. New York, USA"></div>
+        <div class="form-group"><label>Receiver Full Name</label><input type="text" id="adminReceiverName" placeholder="e.g. Sarah Connor"></div>
+        <div class="form-group"><label>Receiver Location (Destination)</label><input type="text" id="adminReceiverLoc" placeholder="e.g. London, UK"></div>
+        <div class="form-group"><label>Customs Clearance Fee ($ or local currency)</label><input type="text" id="adminFee" placeholder="e.g. $450.00"></div>
+        
         <div class="form-group">
             <label>Shipment Status</label>
             <select id="adminStatus">
                 <option value="Order Received">Order Received</option>
                 <option value="Picked Up">Picked Up</option>
                 <option value="In Transit">In Transit</option>
+                <option value="Customs Hold / Clearance Required">Customs Hold / Clearance Required</option>
                 <option value="Out for Delivery">Out for Delivery</option>
                 <option value="Delivered">Delivered</option>
             </select>
         </div>
-        <div class="form-group"><label>Destination</label><input type="text" id="adminDestination" placeholder="e.g. Mexico City"></div>
-        <button class="btn-action" onclick="saveShipmentLocally()">Save Shipment</button>
-        <div id="adminMessage" style="margin-top: 15px; text-align: center; font-size: 14px;"></div>
-        <div style="text-align: center; margin-top: 20px;"><a href="index.html" style="color: #6392B2; text-decoration: none; font-size: 13px;">← Exit to Public Site</a></div>
+
+        <button class="btn-action" onclick="saveShipmentLocally()">Save Shipment & Receipt Data</button>
+        <div id="adminMessage" style="margin-top: 10px; text-align: center; font-size: 13px;"></div>
+        <div style="text-align: center; margin-top: 15px;"><a href="index.html" style="color: #6392B2; text-decoration: none; font-size: 13px;">← Exit to Public Site</a></div>
     </div>
 
     <script>
@@ -60,14 +68,28 @@
         }
         function saveShipmentLocally() {
             const trackingNumber = document.getElementById("adminTrackingNum").value.trim();
+            const senderName = document.getElementById("adminSenderName").value.trim();
+            const senderLoc = document.getElementById("adminSenderLoc").value.trim();
+            const receiverName = document.getElementById("adminReceiverName").value.trim();
+            const receiverLoc = document.getElementById("adminReceiverLoc").value.trim();
+            const fee = document.getElementById("adminFee").value.trim();
             const status = document.getElementById("adminStatus").value;
-            const destination = document.getElementById("adminDestination").value.trim() || "International Hub";
             const msgEl = document.getElementById("adminMessage");
-            if (!trackingNumber) { msgEl.innerHTML = `<span style="color:#ef4444;">Enter a tracking number.</span>`; return; }
+
+            if (!trackingNumber) { msgEl.innerHTML = `<span style="color:#ef4444;">Tracking number is required.</span>`; return; }
             
-            const shipmentData = { tracking_number: trackingNumber, status: status, destination: destination, weight: "4.5 kg" };
+            const shipmentData = {
+                tracking_number: trackingNumber,
+                sender_name: senderName || "Global Shipper",
+                sender_loc: senderLoc || "International Terminal",
+                receiver_name: receiverName || "Valued Recipient",
+                receiver_loc: receiverLoc || "Destination Hub",
+                customs_fee: fee || "$350.00",
+                status: status,
+                weight: "4.5 kg"
+            };
             localStorage.setItem("shipment_" + trackingNumber, JSON.stringify(shipmentData));
-            msgEl.innerHTML = `<span style="color:#10b981; font-weight:bold;">Saved ${trackingNumber}!</span>`;
+            msgEl.innerHTML = `<span style="color:#10b981; font-weight:bold;">Shipment & Receipt Configured!</span>`;
         }
     </script>
 </body>
