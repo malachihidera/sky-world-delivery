@@ -48,6 +48,13 @@
         .form-group label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 5px; }
         .form-group input, .form-group textarea { width: 100%; padding: 10px; border: 1px solid #CBD5E1; border-radius: 6px; font-size: 14px; box-sizing: border-box; }
 
+        /* Floating Contact Icons */
+        .floating-icons { position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; gap: 12px; z-index: 999; }
+        .float-btn { width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; font-size: 24px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); text-decoration: none; transition: transform 0.2s; }
+        .float-btn:hover { transform: scale(1.1); }
+        .whatsapp-float { background-color: #25D366; }
+        .email-float { background-color: #0A2540; }
+
         footer { background: var(--primary); color: white; padding: 30px 20px 15px; font-size: 13px; }
         .footer-info p { margin-bottom: 8px; color: #94A3B8; }
         .footer-bottom { text-align: center; margin-top: 20px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); color: #64748B; }
@@ -86,6 +93,12 @@
         </div>
     </section>
 
+    <!-- Floating Direct Contact Icons -->
+    <div class="floating-icons">
+        <a href="mailto:trackskyworld@gmail.com?subject=Inquiry%20regarding%20Shipment" class="float-btn email-float" title="Send Email"><i class="fas fa-envelope"></i></a>
+        <a href="https://wa.me/2348120067056?text=Hello%20Manager,%20I%20have%20an%20inquiry%20about%20my%20delivery." target="_blank" class="float-btn whatsapp-float" title="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+    </div>
+
     <div class="container">
         <h2 class="section-title" id="services">Our Logistics Services</h2>
         <div class="services-grid">
@@ -105,7 +118,7 @@
             </form>
         </div>
 
-        <!-- Client Email / Message Dispatcher -->
+        <!-- Manager Client Email Dispatcher -->
         <div class="card" style="border-left: 4px solid var(--accent);">
             <h3 style="color: var(--primary); margin-bottom: 10px;"><i class="fa-solid fa-envelope"></i> Send Update / Message to Client</h3>
             <p style="font-size: 13px; color: #64748B; margin-bottom: 15px;">Send a direct email message regarding a specific tracking ID to your client's inbox.</p>
@@ -139,7 +152,7 @@
         <div class="footer-info">
             <h3>Sky World Delivery Company</h3>
             <p><i class="fas fa-map-marker-alt"></i> 14 Hanover Square, Mayfair, London W1S 1HP, United Kingdom</p>
-            <p><i class="fas id-badge"></i> Registration Number: RC 8475621</p>
+            <p><i class="fas fa-id-badge"></i> Registration Number: RC 8475621</p>
         </div>
         <div class="footer-bottom"><p>&copy; 2026 Sky World Delivery Company. All Rights Reserved.</p></div>
     </footer>
