@@ -19,7 +19,7 @@ function trackPackage() {
     resultDiv.innerHTML = `
         <div style="background: #f8fafc; color: #0f172a; padding: 14px; border-radius: 6px; text-align: left; border: 1px solid #cbd5e1; margin-top:10px; font-size:13px;">
             <p style="margin:4px 0;"><strong>Tracking ID:</strong> ${data.tracking_number}</p>
-            <p style="margin:4px 0;"><strong>Destination:</strong> ${data.receiver_loc || data.destination || 'Global Hub'}</p>
+            <p style="margin:4px 0;"><strong>Destination:</strong> ${data.receiver_loc || 'Global Hub'}</p>
             <p style="margin:4px 0;"><strong>Status:</strong> <span style="color:#10b981; font-weight:bold;">${data.status}</span></p>
             <button onclick="printOfficialReceipt('${data.tracking_number}')" class="btn-primary" style="width: 100%; margin-top: 12px; font-size: 13px; background-color: #0A2540; color: #FFC01D;">
                 <i class="fas fa-file-pdf"></i> Print Official Customs Receipt (PDF)
@@ -84,13 +84,13 @@ function printOfficialReceipt(trackingNum) {
                 <div class="grid-section">
                     <div class="box">
                         <h4>SENDER INFORMATION</h4>
-                        <p><strong>Full Name:</strong> ${d.sender_name || 'Global Shipper'}</p>
-                        <p><strong>Origin Location:</strong> ${d.sender_loc || 'International Terminal'}</p>
+                        <p><strong>Full Name:</strong> ${d.sender_name}</p>
+                        <p><strong>Origin Location:</strong> ${d.sender_loc}</p>
                     </div>
                     <div class="box">
                         <h4>RECEIVER INFORMATION</h4>
-                        <p><strong>Full Name:</strong> ${d.receiver_name || 'Valued Recipient'}</p>
-                        <p><strong>Destination Location:</strong> ${d.receiver_loc || d.destination || 'Global Destination'}</p>
+                        <p><strong>Full Name:</strong> ${d.receiver_name}</p>
+                        <p><strong>Destination Location:</strong> ${d.receiver_loc}</p>
                     </div>
                 </div>
 
@@ -102,7 +102,7 @@ function printOfficialReceipt(trackingNum) {
                     </tr>
                     <tr>
                         <td><strong>${d.tracking_number}</strong></td>
-                        <td>${d.weight || '4.5 kg'}</td>
+                        <td>${d.weight}</td>
                         <td><span style="color: #047857; font-weight: bold;">${d.status}</span></td>
                     </tr>
                 </table>
@@ -112,7 +112,7 @@ function printOfficialReceipt(trackingNum) {
                         <span class="fee-title">MANDATORY COUNTRY CUSTOMS CLEARANCE FEE:</span>
                         <p style="margin: 2px 0 0; font-size: 11px; color: #78350F;">Required for final destination customs release & dispatch.</p>
                     </div>
-                    <div class="fee-amount">${d.customs_fee || '$350.00'}</div>
+                    <div class="fee-amount">${d.customs_fee}</div>
                 </div>
 
                 <div class="footer-notes">
@@ -136,11 +136,4 @@ function sendBookingToWhatsApp(event) {
     const pkg = document.getElementById("pkgDetails")?.value || "";
     const message = `Hello Manager, I want to book a delivery.%0A%0A*Name:* ${name}%0A*Addresses:* ${addresses}%0A*Package Details:* ${pkg}`;
     window.open(`https://wa.me/2348120067056?text=${message}`, '_blank');
-}
-
-function sendClientEmail() {
-    const email = document.getElementById("clientEmailInput")?.value;
-    const message = document.getElementById("clientMessageInput")?.value;
-    if (!email) { alert("Please enter a client email address."); return; }
-    window.location.href = `mailto:${email}?subject=Sky%20World%20Delivery%20Update&body=${encodeURIComponent(message)}`;
 }
