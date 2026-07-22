@@ -1,9 +1,9 @@
-// 1. Initialize Supabase Client
+// Initialize Supabase Client
 const SUPABASE_URL = "https://vecqmerzqcxzcldldvhaf.supabase.co";
 const SUPABASE_KEY = "sb_publishable_3oCv-YpSvXAswWuD5YjtJg_7AxaFc3x";
 const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-// 2. Public Tracking Function
+// Public Tracking Function
 async function trackPackage() {
     const inputEl = document.getElementById("trackingInput") || document.getElementById("trackingNum");
     const resultDiv = document.getElementById("trackingResult");
@@ -30,48 +30,16 @@ async function trackPackage() {
             return;
         }
 
-        // Display results dynamically
+        // Display retrieved package data dynamically
         resultDiv.innerHTML = `
-            <p style="margin-top:10px;"><strong>Tracking ID:</strong> ${data.tracking_number}</p>
-            <p><strong>Destination:</strong> ${data.destination || 'Pending'}</p>
-            <p><strong>Package Weight:</strong> ${data.weight || 'N/A'}</p>
-            <p><strong>Current Status:</strong> <span style="color:#10b981; font-weight:bold;">${data.status}</span></p>
+            <div style="margin-top: 15px; background: #f8fafc; color: #0f172a; padding: 15px; border-radius: 8px; text-align: left;">
+                <p><strong>Tracking ID:</strong> ${data.tracking_number}</p>
+                <p><strong>Destination:</strong> ${data.destination || 'Pending'}</p>
+                <p><strong>Package Weight:</strong> ${data.weight || '2.5 kg'}</p>
+                <p><strong>Current Status:</strong> <span style="color:#10b981; font-weight:bold;">${data.status}</span></p>
+            </div>
         `;
     } catch (err) {
         resultDiv.innerHTML = `<p style="color:#ef4444; margin-top:10px;">An error occurred while tracking.</p>`;
-    }
-}
-
-// 3. Admin Create / Update Function
-async function handleAdminSubmit(event) {
-    if (event) event.preventDefault();
-    
-    const trackingNum = document.getElementById("newTrackingNum")?.value.trim();
-    const destination = document.getElementById("newDestination")?.value.trim();
-    const status = document.getElementById("newStatus")?.value || "Order Received";
-    const feedbackDiv = document.getElementById("createFeedback");
-
-    if (!trackingNum) {
-        if (feedbackDiv) feedbackDiv.innerHTML = `<span style="color:red;">Please enter a tracking number.</span>`;
-        return;
-    }
-
-    try {
-        // Upsert saves or updates the record directly in Supabase
-        const { error } = await supabaseClient
-            .from('shipments')
-            .upsert([
-                { tracking_number: trackingNum, destination: destination, status: status, weight: "2.5 kg" }
-            ], { onConflict: ['tracking_number'] });
-
-        if (error) throw error;
-
-        if (feedbackDiv) {
-            feedbackDiv.innerHTML = `<span style="color:green; font-weight:bold;">Successfully saved tracking number ${trackingNum} to Supabase!</span>`;
-        }
-    } catch (err) {
-        if (feedbackDiv) {
-            feedbackDiv.innerHTML = `<span style="color:red;">Error saving: ${err.message}</span>`;
-        }
     }
 }
