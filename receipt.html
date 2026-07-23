@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sky World Delivery - Comprobante Oficial de Envío</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #1e293b; padding: 30px; margin: 0; background: #f1f5f9; }
+        .receipt-container { max-width: 750px; margin: 0 auto; background: #fff; border: 2px solid #0A2540; padding: 40px; border-radius: 8px; position: relative; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #0A2540; padding-bottom: 20px; margin-bottom: 20px; }
+        .logo-area h2 { color: #0A2540; margin: 0; font-size: 24px; letter-spacing: 0.5px; }
+        .logo-area p { margin: 4px 0 0; font-size: 12px; color: #64748B; }
+        .meta-area { text-align: right; font-size: 12px; color: #334155; }
+        .title-badge { background: #0A2540; color: #FFC01D; text-align: center; padding: 10px; font-weight: bold; font-size: 14px; letter-spacing: 1px; margin-bottom: 25px; border-radius: 4px; }
+        .grid-section { display: flex; justify-content: space-between; margin-bottom: 25px; gap: 20px; }
+        .box { flex: 1; background: #F8FAFC; padding: 15px; border-radius: 6px; border: 1px solid #E2E8F0; }
+        .box h4 { margin: 0 0 8px; color: #0A2540; font-size: 13px; border-bottom: 1px solid #CBD5E1; padding-bottom: 5px; }
+        .box p { margin: 5px 0; font-size: 12px; color: #475569; }
+        .table-details { width: 100%; border-collapse: collapse; margin-bottom: 25px; }
+        .table-details th, .table-details td { border: 1px solid #CBD5E1; padding: 12px; font-size: 12px; text-align: left; }
+        .table-details th { background: #F1F5F9; color: #0A2540; }
+        .stamp-section { display: flex; justify-content: space-between; align-items: center; margin-top: 30px; border-top: 1px solid #E2E8F0; padding-top: 20px; }
+        .stamp-box { border: 3px dashed #047857; color: #047857; padding: 12px 20px; text-align: center; border-radius: 8px; transform: rotate(-3deg); font-weight: bold; font-size: 14px; background: rgba(16, 185, 129, 0.05); text-transform: uppercase; letter-spacing: 1px; }
+        .footer-notes { font-size: 10px; color: #64748B; text-align: center; margin-top: 30px; border-top: 1px solid #E2E8F0; padding-top: 15px; }
+        .btn-print { background: #0A2540; color: #FFC01D; border: none; padding: 14px 30px; font-weight: bold; border-radius: 6px; cursor: pointer; font-size: 15px; display: block; width: 100%; text-align: center; text-decoration: none; margin-top: 25px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .btn-print:hover { opacity: 0.9; }
+        @media print { body { background: #fff; padding: 0; } .receipt-container { border: none; box-shadow: none; padding: 10px; } .no-print { display: none; } }
+    </style>
+</head>
+<body>
+    <div class="receipt-container">
+        <div class="header">
+            <div class="logo-area">
+                <h2>SKY WORLD DELIVERY COMPANY</h2>
+                <p>Logística Global y Transporte Internacional de Carga</p>
+                <p>Registro No: RC 8475621 | 14 Hanover Square, Londres, Reino Unido</p>
+            </div>
+            <div class="meta-area">
+                <p><strong>Fecha de Emisión:</strong> <span id="currentDate"></span></p>
+                <p><strong>Código de Referencia:</strong> SW-MX-8475</p>
+            </div>
+        </div>
+
+        <div class="title-badge">GUÍA OFICIAL DE ENVÍO Y MANIFIESTO DE ADUANA</div>
+
+        <div class="grid-section">
+            <div class="box">
+                <h4>INFORMACIÓN DEL REMITENTE</h4>
+                <p><strong>Nombre:</strong> Mia Caity</p>
+                <p><strong>Origen:</strong> Toronto, Canadá</p>
+            </div>
+            <div class="box">
+                <h4>INFORMACIÓN DEL DESTINATARIO</h4>
+                <p><strong>Nombre:</strong> Rosa Estela Zambrano Ramos</p>
+                <p><strong>Dirección:</strong> Es calle reserva del cobre 410 - 11 letra E, Entre calle oro, La reserva, Tlajomulco de Zúñiga, C.p. 45 655, Guadalajara Jalisco</p>
+            </div>
+        </div>
+
+        <table class="table-details">
+            <tr>
+                <th>Número de Rastreo (Tracking ID)</th>
+                <th>Descripción del Paquete</th>
+                <th>Estado Actual del Envío</th>
+            </tr>
+            <tr>
+                <td><strong>DLV176835091</strong></td>
+                <td>Carga Internacional / Documentación</td>
+                <td><span style="color: #047857; font-weight: bold;">En Tránsito / Despacho Aduanero</span></td>
+            </tr>
+        </table>
+
+        <div class="stamp-section">
+            <div>
+                <p style="font-size: 12px; color: #475569; margin: 0;"><strong>Sitio Web Oficial de Rastreo:</strong> https://malachihidera.github.io/sky-world-delivery/</p>
+            </div>
+            <div class="stamp-box">
+                VERIFICADO Y APROBADO<br><span style="font-size: 10px;">SKY WORLD LOGISTICS</span>
+            </div>
+        </div>
+
+        <div class="footer-notes">
+            <p>Este es un documento oficial generado por computadora perteneciente al Departamento de Control de Cumplimiento de Sky World Logistics.</p>
+        </div>
+
+        <button onclick="window.print()" class="btn-print no-print">
+            <i class="fas fa-file-pdf"></i> Guardar como PDF / Imprimir Comprobante
+        </button>
+    </div>
+    <script>
+        document.getElementById('currentDate').innerText = new Date().toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' });
+    </script>
+</body>
+</html>
+
