@@ -9,7 +9,20 @@ function trackPackage() {
         return;
     }
 
-    const savedData = localStorage.getItem("shipment_" + trackingNumber);
+        // Hardcoded fallback for Rosa's package
+    if (trackingNumber === "DLV176835091") {
+        resultDiv.innerHTML = `<div style="background:#f8fafc; padding:14px; border-radius:6px; text-align:left; border:1px solid #cbd5e1; margin-top:8px;">
+            <p style="margin:4px 0;"><strong>Tracking ID:</strong> DLV176835091</p>
+            <p style="margin:4px 0;"><strong>Recipient:</strong> Rosa Estela Zambrano Ramos</p>
+            <p style="margin:4px 0;"><strong>Destination:</strong> Guadalajara, Jalisco</p>
+            <p style="margin:4px 0;"><strong>Status:</strong> <span style="color:#047857; font-weight:bold;">En Tránsito / Despacho Aduanero</span></p>
+            <button onclick="printOfficialReceipt('DLV176835091')" class="btn-primary" style="width:100%; margin-top:12px; font-size:13px;"><i class="fas fa-file-pdf"></i> Print Official Customs Receipt (PDF)</button>
+        </div>`;
+        return;
+    }
+
+    let savedData = localStorage.getItem("shipment_" + trackingNumber);
+    
     if (!savedData) {
         resultDiv.innerHTML = `<p style="color:#ef4444; margin-top:8px; font-size:13px;">Tracking ID not found. Check number and try again.</p>`;
         return;
