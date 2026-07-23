@@ -67,17 +67,16 @@
             <span><i class="fas fa-id-card"></i> Reg: <strong>RC 8475621</strong></span>
             <span><i class="fas fa-envelope"></i> trackskyworld@gmail.com</span>
             
-            <!-- Custom Language Dropdown -->
+            <!-- Manual backup switch just in case -->
             <div>
-                <i class="fas fa-globe" style="color: var(--accent);"></i>
                 <select id="languageSelect" onchange="changeLanguage(this.value)" style="background: #0F172A; color: white; border: 1px solid #475569; padding: 4px 8px; border-radius: 4px; font-size: 12px; outline: none;">
                     <option value="en">English</option>
-                    <option value="es">Español (Spanish)</option>
-                    <option value="fr">Français (French)</option>
-                    <option value="de">Deutsch (German)</option>
-                    <option value="zh-CN">中文 (Chinese)</option>
-                    <option value="ar">العربية (Arabic)</option>
-                    <option value="pt">Português (Portuguese)</option>
+                    <option value="es">Español</option>
+                    <option value="fr">Français</option>
+                    <option value="de">Deutsch</option>
+                    <option value="zh-CN">中文</option>
+                    <option value="ar">العربية</option>
+                    <option value="pt">Português</option>
                 </select>
             </div>
         </div>
@@ -162,12 +161,24 @@
         <div class="footer-bottom"><p>&copy; 2026 Sky World Delivery Company. All Rights Reserved.</p></div>
     </footer>
 
-    <!-- Hidden Google Translate Element required for translation background processing -->
+    <!-- Hidden Google Translate Element -->
     <div id="google_translate_element" style="display:none;"></div>
 
     <script type="text/javascript">
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({pageLanguage: 'en', autoDisplay: false}, 'google_translate_element');
+      
+      // Auto-detect phone language and apply translation instantly
+      setTimeout(function() {
+          var userLang = navigator.language || navigator.userLanguage; 
+          var shortLang = userLang ? userLang.substring(0, 2) : 'en';
+          
+          if(shortLang !== 'en') {
+              changeLanguage(shortLang);
+              var dropdown = document.getElementById('languageSelect');
+              if(dropdown) { dropdown.value = shortLang; }
+          }
+      }, 1000);
     }
 
     function changeLanguage(langCode) {
@@ -175,9 +186,6 @@
         if (selectField) {
             selectField.value = langCode;
             selectField.dispatchEvent(new Event('change'));
-        } else {
-            // Fallback if widget is still loading
-            setTimeout(function() { changeLanguage(langCode); }, 500);
         }
     }
     </script>
@@ -185,5 +193,4 @@
 
     <script src="script.js"></script>
 </body>
-        </html>
-        
+</html>
