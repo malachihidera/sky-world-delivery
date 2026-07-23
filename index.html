@@ -55,11 +55,6 @@
         .whatsapp-float { background-color: #25D366; }
         .email-float { background-color: #0A2540; }
 
-        /* Google Translate Styling Customization */
-        .goog-te-combo { padding: 4px; border-radius: 4px; background: #0F172A; color: white; border: 1px solid #475569; font-size: 12px; outline: none; }
-        .goog-logo-link, .goog-te-gadget span { display: none !important; }
-        .goog-te-gadget { color: transparent !important; font-size: 0px; }
-
         footer { background: var(--primary); color: white; padding: 30px 20px 15px; font-size: 13px; }
         .footer-info p { margin-bottom: 8px; color: #94A3B8; }
         .footer-bottom { text-align: center; margin-top: 20px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); color: #64748B; }
@@ -71,10 +66,19 @@
         <div class="top-bar">
             <span><i class="fas fa-id-card"></i> Reg: <strong>RC 8475621</strong></span>
             <span><i class="fas fa-envelope"></i> trackskyworld@gmail.com</span>
-            <!-- Google Translate Widget Container -->
+            
+            <!-- Custom Language Dropdown -->
             <div>
-                <span style="font-size: 11px; margin-right: 5px;"><i class="fas fa-globe"></i> Language:</span>
-                <div id="google_translate_element" style="display: inline-block;"></div>
+                <i class="fas fa-globe" style="color: var(--accent);"></i>
+                <select id="languageSelect" onchange="changeLanguage(this.value)" style="background: #0F172A; color: white; border: 1px solid #475569; padding: 4px 8px; border-radius: 4px; font-size: 12px; outline: none;">
+                    <option value="en">English</option>
+                    <option value="es">Español (Spanish)</option>
+                    <option value="fr">Français (French)</option>
+                    <option value="de">Deutsch (German)</option>
+                    <option value="zh-CN">中文 (Chinese)</option>
+                    <option value="ar">العربية (Arabic)</option>
+                    <option value="pt">Português (Portuguese)</option>
+                </select>
             </div>
         </div>
         <div class="nav-container">
@@ -158,18 +162,28 @@
         <div class="footer-bottom"><p>&copy; 2026 Sky World Delivery Company. All Rights Reserved.</p></div>
     </footer>
 
-    <!-- Google Translate Script -->
+    <!-- Hidden Google Translate Element required for translation background processing -->
+    <div id="google_translate_element" style="display:none;"></div>
+
     <script type="text/javascript">
     function googleTranslateElementInit() {
-      new google.translate.TranslateElement({
-        pageLanguage: 'en',
-        includedLanguages: 'es,fr,de,zh-CN,ar,pt,ru,it',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-      }, 'google_translate_element');
+      new google.translate.TranslateElement({pageLanguage: 'en', autoDisplay: false}, 'google_translate_element');
+    }
+
+    function changeLanguage(langCode) {
+        var selectField = document.querySelector(".goog-te-combo");
+        if (selectField) {
+            selectField.value = langCode;
+            selectField.dispatchEvent(new Event('change'));
+        } else {
+            // Fallback if widget is still loading
+            setTimeout(function() { changeLanguage(langCode); }, 500);
+        }
     }
     </script>
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
     <script src="script.js"></script>
 </body>
-</html>
+        </html>
+        
