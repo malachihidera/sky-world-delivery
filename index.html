@@ -14,7 +14,7 @@
             --dark: #0F172A;
             --gray: #64748B;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; scroll-behavior: smooth; }
         body { background-color: var(--light); color: var(--dark); line-height: 1.6; }
 
         /* Top Header Bar */
@@ -22,10 +22,10 @@
         .top-bar-left span { margin-right: 20px; }
         .top-bar select { background: #1E293B; color: white; border: 1px solid #475569; padding: 3px 6px; border-radius: 4px; font-size: 12px; }
 
-        /* Main Navigation with Dropdowns */
+        /* Main Navigation */
         header { background-color: var(--primary); color: white; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
         .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 12px 5%; max-width: 1300px; margin: 0 auto; }
-        .logo { font-size: 20px; font-weight: 800; color: var(--accent); display: flex; align-items: center; gap: 8px; }
+        .logo { font-size: 20px; font-weight: 800; color: var(--accent); display: flex; align-items: center; gap: 8px; text-decoration: none; }
         
         nav { display: flex; align-items: center; }
         .nav-menu { display: flex; list-style: none; gap: 5px; align-items: center; }
@@ -33,7 +33,7 @@
         .nav-menu a { color: white; text-decoration: none; font-size: 14px; font-weight: 500; padding: 10px 15px; display: block; transition: color 0.2s; border-radius: 4px; }
         .nav-menu a:hover, .nav-menu li:hover > a { color: var(--accent); background: rgba(255,255,255,0.05); }
         
-        /* Dropdown Menus */
+        /* Dropdowns */
         .dropdown { display: none; position: absolute; top: 100%; left: 0; background: var(--primary); min-width: 200px; box-shadow: 0 8px 20px rgba(0,0,0,0.3); border-radius: 0 0 6px 6px; border-top: 2px solid var(--accent); list-style: none; padding: 8px 0; z-index: 100; }
         .nav-menu li:hover .dropdown { display: block; }
         .dropdown li a { padding: 10px 20px; font-size: 13px; white-space: nowrap; }
@@ -41,57 +41,48 @@
 
         .admin-btn { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); margin-left: 10px; }
 
-        /* Hero Slideshow / Banner */
-        .hero-slider { position: relative; height: 420px; background: var(--primary); overflow: hidden; color: white; display: flex; align-items: center; justify-content: center; text-align: center; }
-        .slide { position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out; display: flex; flex-direction: column; align-items: center; justify-content: center; background-size: cover; background-position: center; padding: 0 20px; }
-        .slide.active { opacity: 1; }
-        .slide-1 { background: linear-gradient(rgba(10,37,64,0.7), rgba(10,37,64,0.7)), url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1400&q=80'); }
-        .slide-2 { background: linear-gradient(rgba(10,37,64,0.7), rgba(10,37,64,0.7)), url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1400&q=80'); }
-        .slide-3 { background: linear-gradient(rgba(10,37,64,0.7), rgba(10,37,64,0.7)), url('https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&w=1400&q=80'); }
+        /* Page Section Display Switcher (Controls multi-page tab views inside a single file) */
+        .page-section { display: none; padding: 40px 5%; max-width: 1200px; margin: 0 auto; min-height: 70vh; }
+        .page-section.active-page { display: block; }
+
+        /* Hero / Home View Specifics */
+        .hero-banner { background: linear-gradient(rgba(10,37,64,0.8), rgba(10,37,64,0.8)), url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1400&q=80'); background-size: cover; background-position: center; color: white; padding: 80px 20px; text-align: center; border-radius: 8px; margin-bottom: 40px; }
+        .hero-banner h1 { font-size: 32px; font-weight: 700; margin-bottom: 10px; }
+        .hero-banner p { font-size: 15px; color: #CBD5E1; margin-bottom: 25px; }
+
+        /* Tracking Box */
+        .track-box { background: white; padding: 25px; border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); max-width: 650px; margin: 0 auto; color: var(--dark); text-align: left; }
+        .track-box h3 { font-size: 18px; color: var(--primary); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+        .track-input-row { display: flex; gap: 10px; margin-top: 12px; }
+        .track-input-row input { flex: 1; padding: 12px; border: 2px solid #CBD5E1; border-radius: 6px; font-size: 14px; outline: none; }
+        .btn-main { background: var(--accent); color: var(--primary); border: none; padding: 12px 22px; font-weight: bold; border-radius: 6px; cursor: pointer; font-size: 14px; }
+        .btn-main:hover { opacity: 0.9; }
+
+        /* Section Titles & Grids */
+        .sec-title { font-size: 26px; color: var(--primary); margin-bottom: 20px; font-weight: 700; text-align: center; }
+        .sec-title::after { content: ''; display: block; width: 50px; height: 3px; background: var(--accent); margin: 8px auto 25px; border-radius: 2px; }
         
-        .hero-slider h1 { font-size: 32px; font-weight: 700; margin-bottom: 10px; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
-        .hero-slider p { font-size: 15px; color: #E2E8F0; margin-bottom: 20px; text-shadow: 0 1px 3px rgba(0,0,0,0.5); }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 40px; }
+        .service-card { background: white; padding: 30px 20px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); text-align: center; border: 1px solid #E2E8F0; }
+        .service-card i { font-size: 35px; color: var(--primary); margin-bottom: 15px; }
+        .service-card h3 { font-size: 18px; color: var(--primary); margin-bottom: 10px; }
+        .service-card p { font-size: 13px; color: var(--gray); margin-bottom: 15px; }
 
-        /* Embedded Tracking Box inside Hero */
-        .track-box-wrapper { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); width: 100%; max-width: 600px; color: var(--dark); text-align: left; }
-        .track-box-wrapper h3 { font-size: 16px; color: var(--primary); margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
-        .track-input-row { display: flex; gap: 8px; }
-        .track-input-row input { flex: 1; padding: 10px 12px; border: 2px solid #CBD5E1; border-radius: 6px; font-size: 14px; outline: none; }
-        .btn-track { background: var(--accent); color: var(--primary); border: none; padding: 10px 20px; font-weight: bold; border-radius: 6px; cursor: pointer; font-size: 14px; }
-        .btn-track:hover { opacity: 0.9; }
+        /* Standard Content Cards & Contact Panels */
+        .content-card { background: white; padding: 35px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #E2E8F0; margin-bottom: 30px; }
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 20px; }
+        .contact-option-box { background: #F8FAFC; padding: 25px; border-radius: 8px; border: 1px solid #CBD5E1; text-align: center; }
+        .contact-option-box i { font-size: 40px; margin-bottom: 15px; }
+        .contact-option-box.wa i { color: #25D366; }
+        .contact-option-box.em i { color: var(--primary); }
+        .contact-btn { display: inline-block; padding: 10px 20px; font-weight: bold; border-radius: 6px; text-decoration: none; margin-top: 15px; font-size: 14px; }
+        .wa-btn { background: #25D366; color: white; }
+        .em-btn { background: var(--primary); color: white; }
 
-        /* Main Container & Sections */
-        .container { max-width: 1200px; margin: 0 auto; padding: 50px 20px; }
-        .section-header { text-align: center; margin-bottom: 40px; }
-        .section-header h2 { font-size: 28px; color: var(--primary); font-weight: 700; margin-bottom: 10px; }
-        .section-header p { font-size: 14px; color: var(--gray); max-width: 700px; margin: 0 auto; }
-
-        /* Services Grid (Matches Professional Layout) */
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; margin-bottom: 50px; }
-        .service-box { background: white; padding: 30px 25px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: center; border: 1px solid #E2E8F0; transition: transform 0.2s, border-color 0.2s; }
-        .service-box:hover { transform: translateY(-5px); border-color: var(--accent); }
-        .service-icon { width: 60px; height: 60px; background: rgba(10,37,64,0.05); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; color: var(--primary); font-size: 24px; }
-        .service-box h3 { font-size: 18px; color: var(--primary); margin-bottom: 10px; }
-        .service-box p { font-size: 13px; color: var(--gray); margin-bottom: 20px; }
-        .service-link { color: var(--primary); text-decoration: none; font-size: 13px; font-weight: 600; background: var(--accent); padding: 6px 15px; border-radius: 4px; display: inline-block; }
-
-        /* Why Choose Us & Industries Section */
-        .features-section { background: white; padding: 40px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 50px; }
-        .features-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 20px; }
-        .feature-item { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 500; color: var(--dark); }
-        .feature-item i { color: #047857; }
-
-        /* Booking Section */
-        .booking-card { background: white; padding: 35px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-top: 4px solid var(--primary); max-width: 800px; margin: 0 auto; }
-        .form-row { margin-bottom: 20px; }
-        .form-row label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px; color: var(--primary); }
-        .form-row input, .form-row textarea { width: 100%; padding: 12px; border: 1px solid #CBD5E1; border-radius: 6px; font-size: 14px; outline: none; }
-        .form-row input:focus, .form-row textarea:focus { border-color: var(--primary); }
-
-        /* FAQ Section */
-        .faq-box { background: white; padding: 25px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-top: 40px; }
-        .faq-box h4 { color: var(--primary); margin-bottom: 8px; font-size: 16px; }
-        .faq-box p { font-size: 14px; color: var(--gray); margin-bottom: 20px; }
+        /* Booking Form */
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 5px; color: var(--primary); }
+        .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #CBD5E1; border-radius: 6px; font-size: 14px; outline: none; }
 
         /* Floating Contact Buttons */
         .floating-icons { position: fixed; bottom: 25px; right: 25px; display: flex; flex-direction: column; gap: 12px; z-index: 1000; }
@@ -101,13 +92,11 @@
         .email-float { background-color: var(--primary); }
 
         /* Footer */
-        footer { background: var(--primary); color: white; padding: 50px 20px 20px; border-top: 4px solid var(--accent); }
-        .footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-bottom: 30px; }
-        .footer-col h3 { color: var(--accent); margin-bottom: 15px; font-size: 16px; }
-        .footer-col p, .footer-col ul li a { font-size: 13px; color: #CBD5E1; text-decoration: none; margin-bottom: 8px; display: block; }
-        .footer-col ul { list-style: none; }
-        .footer-col ul li a:hover { color: var(--accent); }
-        .footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); color: #94A3B8; font-size: 13px; }
+        footer { background: var(--primary); color: white; padding: 40px 5% 20px; border-top: 4px solid var(--accent); margin-top: 40px; }
+        .footer-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; margin-bottom: 25px; }
+        .footer-info h3 { color: var(--accent); margin-bottom: 10px; font-size: 16px; }
+        .footer-info p { font-size: 13px; color: #CBD5E1; margin-bottom: 6px; }
+        .footer-bottom { text-align: center; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); color: #94A3B8; font-size: 13px; }
     </style>
 </head>
 <body>
@@ -130,180 +119,179 @@
         </div>
     </div>
 
-    <!-- Main Navigation Bar with Dropdown Menus -->
+    <!-- Navigation Bar -->
     <header>
         <div class="nav-container">
-            <div class="logo"><i class="fas fa-plane-departure"></i> SKY WORLD EXPRESS</div>
+            <a href="#" onclick="switchPage('home')" class="logo"><i class="fas fa-plane-departure"></i> SKY WORLD EXPRESS</a>
             <nav>
                 <ul class="nav-menu">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#" onclick="switchPage('home')">Home</a></li>
+                    <li><a href="#" onclick="switchPage('about')">About Us</a></li>
                     <li>
-                        <a href="#courier">Courier Service <i class="fas fa-chevron-down" style="font-size: 10px;"></i></a>
+                        <a href="#" onclick="switchPage('courier')">Courier Service <i class="fas fa-chevron-down" style="font-size: 10px;"></i></a>
                         <ul class="dropdown">
-                            <li><a href="#courier">Inbound Express</a></li>
-                            <li><a href="#courier">Outbound Express</a></li>
+                            <li><a href="#" onclick="switchPage('courier')">Inbound Express</a></li>
+                            <li><a href="#" onclick="switchPage('courier')">Outbound Express</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href="#services">Logistics Service <i class="fas fa-chevron-down" style="font-size: 10px;"></i></a>
+                        <a href="#" onclick="switchPage('logistics')">Logistics Service <i class="fas fa-chevron-down" style="font-size: 10px;"></i></a>
                         <ul class="dropdown">
-                            <li><a href="#services">Air Freight</a></li>
-                            <li><a href="#services">Ocean Freight</a></li>
-                            <li><a href="#services">Road Freight</a></li>
-                            <li><a href="#services">Customs Clearance</a></li>
+                            <li><a href="#" onclick="switchPage('logistics')">Air & Ocean Freight</a></li>
+                            <li><a href="#" onclick="switchPage('logistics')">Customs Clearance</a></li>
                         </ul>
                     </li>
-                    <li><a href="#track-section">Tracking</a></li>
-                    <li><a href="#contact">Contact Us</a></li>
+                    <li><a href="#" onclick="switchPage('tracking')">Tracking</a></li>
+                    <li><a href="#" onclick="switchPage('contact')">Contact Us</a></li>
                     <li><a href="admin.html" class="admin-btn"><i class="fas fa-lock"></i> Admin</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- Hero Slideshow Banner -->
-    <div class="hero-slider" id="home">
-        <div class="slide slide-1 active">
+    <!-- ================= 1. HOME PAGE VIEW ================= -->
+    <div id="page-home" class="page-section active-page">
+        <div class="hero-banner">
             <h1>Global Express Delivery Services</h1>
             <p>Reliable, Fast, and Secure Freight & Courier Solutions Worldwide.</p>
-            <div class="track-box-wrapper" id="track-section">
+            <div class="track-box">
                 <h3><i class="fas fa-search-location"></i> Track Your Shipment</h3>
                 <div class="track-input-row">
-                    <input type="text" id="trackingInput" placeholder="Enter waybill number (e.g. DLV189024161)">
-                    <button class="btn-track" onclick="trackPackage()">Track</button>
+                    <input type="text" id="homeTrackingInput" placeholder="Enter waybill number (e.g. DLV189024161)">
+                    <button class="btn-main" onclick="executeTracking('homeTrackingInput', 'homeTrackingResult')">Track</button>
                 </div>
-                <div id="trackingResult"></div>
+                <div id="homeTrackingResult"></div>
             </div>
         </div>
-        <div class="slide slide-2">
-            <h1>International Air & Ocean Freight</h1>
-            <p>Ensuring Safe Delivery of Your Packages From Our Warehouse to Your Destination.</p>
-            <div class="track-box-wrapper">
-                <h3><i class="fas fa-search-location"></i> Track Your Shipment</h3>
-                <div class="track-input-row">
-                    <input type="text" id="trackingInput2" placeholder="Enter waybill number...">
-                    <button class="btn-track" onclick="trackPackageAlt()">Track</button>
-                </div>
-                <div id="trackingResult2"></div>
+
+        <h2 class="sec-title">Our Core Features</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-truck"></i>
+                <h3>Express Courier</h3>
+                <p>Door-to-door solutions for time-sensitive packages and business documents.</p>
+                <button class="btn-main" style="padding: 6px 14px; font-size: 12px;" onclick="switchPage('courier')">View Courier</button>
             </div>
-        </div>
-        <div class="slide slide-3">
-            <h1>Customs Brokerage & Nationwide Transport</h1>
-            <p>Seamless Supply Chain Management across Borders and Regions.</p>
-            <div class="track-box-wrapper">
-                <h3><i class="fas fa-search-location"></i> Track Your Shipment</h3>
-                <div class="track-input-row">
-                    <input type="text" id="trackingInput3" placeholder="Enter waybill number...">
-                    <button class="btn-track" onclick="trackPackageAlt3()">Track</button>
-                </div>
-                <div id="trackingResult3"></div>
+            <div class="service-card">
+                <i class="fas fa-globe-americas"></i>
+                <h3>International Freight</h3>
+                <p>Global air cargo and ocean shipping networks with full customs brokerage support.</p>
+                <button class="btn-main" style="padding: 6px 14px; font-size: 12px;" onclick="switchPage('logistics')">View Logistics</button>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-headset"></i>
+                <h3>24/7 Support</h3>
+                <p>Direct communication channels via WhatsApp and Email for all shipment inquiries.</p>
+                <button class="btn-main" style="padding: 6px 14px; font-size: 12px;" onclick="switchPage('contact')">Contact Us</button>
             </div>
         </div>
     </div>
 
-    <!-- Main Page Content -->
-    <div class="container">
-        
-        <!-- Services Section -->
-        <div class="section-header" id="services">
-            <h2>OUR LOGISTICS SERVICES</h2>
-            <p>Getting a clear overview of rates and times allows you to make an informed decision for your business. Check out all the services on offer and choose one to suit you.</p>
+    <!-- ================= 2. ABOUT US PAGE VIEW ================= -->
+    <div id="page-about" class="page-section">
+        <h2 class="sec-title">About Sky World Express & Logistics</h2>
+        <div class="content-card">
+            <p style="margin-bottom: 15px; color: var(--dark);"><strong>Sky World Express</strong> is a premier global logistics and freight forwarding company established with a commitment to providing secure, rapid, and dependable supply chain solutions. Operating from major global transport hubs, we specialize in international express door-to-door delivery, comprehensive customs brokerage, and heavy cargo transit.</p>
+            <p style="margin-bottom: 15px; color: var(--dark);">Our mission is to bridge distances for businesses and individuals alike, ensuring that every parcel, document, or freight shipment is handled with utmost professional care, tracked in real-time, and delivered precisely on schedule.</p>
+            <div style="background: #F8FAFC; padding: 20px; border-left: 4px solid var(--accent); margin-top: 20px;">
+                <p><strong>Corporate Registration:</strong> RC 8475621</p>
+                <p><strong>Headquarters:</strong> 14 Hanover Square, Mayfair, London W1S 1HP, United Kingdom</p>
+            </div>
         </div>
+    </div>
 
+    <!-- ================= 3. COURIER SERVICE PAGE VIEW ================= -->
+    <div id="page-courier" class="page-section">
+        <h2 class="sec-title">Courier Services</h2>
         <div class="services-grid">
-            <div class="service-box">
-                <div class="service-icon"><i class="fas fa-truck"></i></div>
-                <h3>Express Courier</h3>
-                <p>International Express Courier is a door-to-door solution for your time-sensitive goods, from small envelopes to full freight.</p>
-                <a href="#book" class="service-link">Book Service</a>
+            <div class="service-card">
+                <i class="fas fa-box-open"></i>
+                <h3>Inbound Express Delivery</h3>
+                <p>Fast and reliable reception and customs clearance processing for packages arriving into your country from overseas partners and international vendors.</p>
             </div>
-            <div class="service-box">
-                <div class="service-icon"><i class="fas fa-plane"></i></div>
-                <h3>Air Freight</h3>
-                <p>As a full-service provider, we offer a full range of air freight throughout the world's major trading centers.</p>
-                <a href="#book" class="service-link">Book Service</a>
-            </div>
-            <div class="service-box">
-                <div class="service-icon"><i class="fas fa-ship"></i></div>
-                <h3>Ocean Freight</h3>
-                <p>We have an excellent network relationship with the world's leading shipping lines for cost-effective global options.</p>
-                <a href="#book" class="service-link">Book Service</a>
-            </div>
-            <div class="service-box">
-                <div class="service-icon"><i class="fas fa-road"></i></div>
-                <h3>Road Freight</h3>
-                <p>Deliver your products to reach the destination in a cost-effective way on time with our exclusive truck fleet.</p>
-                <a href="#book" class="service-link">Book Service</a>
-            </div>
-            <div class="service-box">
-                <div class="service-icon"><i class="fas fa-file-invoice-dollar"></i></div>
-                <h3>Customs Brokerage</h3>
-                <p>We are leading customs brokerage service providers with high performance standards and local compliance expertise.</p>
-                <a href="#book" class="service-link">Book Service</a>
-            </div>
-            <div class="service-box">
-                <div class="service-icon"><i class="fas fa-warehouse"></i></div>
-                <h3>Nationwide Transport</h3>
-                <p>Move freight with confidence, whether transporting truckloads or small parcels consistently throughout the nation.</p>
-                <a href="#book" class="service-link">Book Service</a>
+            <div class="service-card">
+                <i class="fas fa-paper-plane"></i>
+                <h3>Outbound Express Delivery</h3>
+                <p>Speedy dispatch solutions for sending time-sensitive documents, retail goods, and commercial packages out to global recipients securely.</p>
             </div>
         </div>
-
-        <!-- Why People Choose Us -->
-        <div class="features-section">
-            <div class="section-header" style="margin-bottom: 20px;">
-                <h2>Why People Choose Us?</h2>
-                <p>We are open every second of every day of the year with trained employees who personally dispatch and monitor each and every order.</p>
-            </div>
-            <div class="features-list">
-                <div class="feature-item"><i class="fas fa-check-circle"></i> Competitive Rate</div>
-                <div class="feature-item"><i class="fas fa-check-circle"></i> Cost Saving</div>
-                <div class="feature-item"><i class="fas fa-check-circle"></i> Flexible Service Team</div>
-                <div class="feature-item"><i class="fas fa-check-circle"></i> 24/7 Customer Service</div>
-                <div class="feature-item"><i class="fas fa-check-circle"></i> Professional Team</div>
-                <div class="feature-item"><i class="fas fa-check-circle"></i> Real-time Tracking</div>
-                <div class="feature-item"><i class="fas fa-check-circle"></i> Door-to-Door Delivery</div>
-                <div class="feature-item"><i class="fas fa-check-circle"></i> Proof of Delivery</div>
-            </div>
-        </div>
-
-        <!-- Booking Section -->
-        <div class="section-header" id="book">
-            <h2>Book a Package Delivery</h2>
-            <p>Fill out the order details below to instantly dispatch your delivery request to our management team.</p>
-        </div>
-        <div class="booking-card">
+        
+        <div class="content-card">
+            <h3 style="color: var(--primary); margin-bottom: 15px;">Book a Courier Dispatch</h3>
             <form onsubmit="sendBookingToWhatsApp(event)">
-                <div class="form-row">
-                    <label>Your Full Name</label>
-                    <input type="text" id="custName" placeholder="John Doe" required>
-                </div>
-                <div class="form-row">
-                    <label>Pickup & Delivery Address</label>
-                    <textarea id="addresses" rows="2" placeholder="From & To destination addresses" required></textarea>
-                </div>
-                <div class="form-row">
-                    <label>Package Description & Weight</label>
-                    <input type="text" id="pkgDetails" placeholder="e.g. Documents, 4.5kg" required>
-                </div>
-                <button type="submit" class="btn-track" style="width: 100%; padding: 14px; font-size: 15px;"><i class="fab fa-whatsapp"></i> Send Order Details to WhatsApp</button>
+                <div class="form-group"><label>Your Full Name</label><input type="text" id="custName" placeholder="John Doe" required></div>
+                <div class="form-group"><label>Pickup & Delivery Address</label><textarea id="addresses" rows="2" placeholder="From & To destination addresses" required></textarea></div>
+                <div class="form-group"><label>Package Description & Weight</label><input type="text" id="pkgDetails" placeholder="e.g. Documents, 4.5kg" required></div>
+                <button type="submit" class="btn-main" style="width: 100%;"><i class="fab fa-whatsapp"></i> Send Booking Details to WhatsApp</button>
             </form>
         </div>
+    </div>
 
-        <!-- FAQ Section -->
-        <div class="faq-box" id="about">
-            <h4>Frequently Asked Questions</h4>
-            <p><strong>How do I track my shipment?</strong> Simply enter your tracking waybill ID into the tracker box at the top of the homepage to view your package status and access your official customs document.</p>
-            <p><strong>What international shipping options do you offer?</strong> We provide comprehensive air freight, ocean freight, customs clearance, and express door-to-door courier options worldwide.</p>
+    <!-- ================= 4. LOGISTICS SERVICE PAGE VIEW ================= -->
+    <div id="page-logistics" class="page-section">
+        <h2 class="sec-title">Logistics & Freight Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-plane"></i>
+                <h3>Air Freight Forwarding</h3>
+                <p>Full-service import and export air cargo solutions connecting major global trading centers with expedited priority turnaround.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-ship"></i>
+                <h3>Ocean Cargo Shipping</h3>
+                <p>Cost-effective sea freight network relationship with leading carriers for bulk commercial shipping and large cargo containers.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-file-invoice-dollar"></i>
+                <h3>Customs Clearance & Brokerage</h3>
+                <p>Expert compliance support navigating local legislation and duty payments to speed up border clearances smoothly.</p>
+            </div>
         </div>
+    </div>
 
+    <!-- ================= 5. TRACKING PAGE VIEW ================= -->
+    <div id="page-tracking" class="page-section">
+        <h2 class="sec-title">Shipment Tracking Portal</h2>
+        <div class="content-card" style="max-width: 700px; margin: 0 auto; text-align: center;">
+            <p style="color: var(--gray); margin-bottom: 20px; font-size: 14px;">Enter your unique waybill tracking ID generated by our management team to view live transit milestones and access official customs clearance documents.</p>
+            <div class="track-input-row" style="margin-bottom: 15px;">
+                <input type="text" id="dedicatedTrackingInput" placeholder="Enter tracking ID (e.g. DLV189024161)">
+                <button class="btn-main" onclick="executeTracking('dedicatedTrackingInput', 'dedicatedTrackingResult')">Track Now</button>
+            </div>
+            <div id="dedicatedTrackingResult" style="text-align: left;"></div>
+        </div>
+    </div>
+
+    <!-- ================= 6. CONTACT US PAGE VIEW ================= -->
+    <div id="page-contact" class="page-section">
+        <h2 class="sec-title">Get in Touch with Management</h2>
+        <div class="content-card" style="text-align: center; max-width: 800px; margin: 0 auto;">
+            <p style="color: var(--gray); margin-bottom: 25px;">Have questions regarding a delivery, customs fee, or cargo booking? Reach out directly via WhatsApp or Email using the official channels below:</p>
+            
+            <div class="contact-grid">
+                <div class="contact-option-box wa">
+                    <i class="fab fa-whatsapp"></i>
+                    <h3 style="color: var(--primary); font-size: 16px;">WhatsApp Support</h3>
+                    <p style="font-size: 13px; color: var(--gray); margin-top: 5px;">Chat instantly with our active manager desk.</p>
+                    <a href="https://wa.me/407856211227?text=Hello%20Manager,%20I%20have%20an%20inquiry%20about%20my%20delivery." target="_blank" class="contact-btn wa-btn"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+                </div>
+                
+                <div class="contact-option-box em">
+                    <i class="fas fa-envelope"></i>
+                    <h3 style="color: var(--primary); font-size: 16px;">Email Support</h3>
+                    <p style="font-size: 13px; color: var(--gray); margin-top: 5px;">Send detailed documentation files or formal inquiries.</p>
+                    <a href="mailto:trackskyworld@gmail.com" class="contact-btn em-btn"><i class="fas fa-envelope"></i> Send Email</a>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Hidden Google Translate Element -->
     <div id="google_translate_element" style="display:none;"></div>
 
-    <!-- Floating Direct Contact Icons -->
+    <!-- Floating Direct Contact Icons (Always present across all pages) -->
     <div class="floating-icons">
         <a href="mailto:trackskyworld@gmail.com" class="float-btn email-float" title="Email Manager"><i class="fas fa-envelope"></i></a>
-        
+        <a href="https://wa.me/407856211227?text=Hello%20Manager,%20I%20have%20an%20inquiry%20about%20my%20delivery." class="float-btn whatsapp-float" target="_blank" title="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+    </div>
+    
