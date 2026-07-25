@@ -3,124 +3,195 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sky World Delivery Company | Global Logistics</title>
+    <title>Sky World Delivery Company | Global Logistics & Express</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
             --primary: #0A2540;
             --accent: #FFC01D;
-            --secondary: #6392B2;
+            --secondary: #1E3A8A;
             --light: #F8FAFC;
-            --dark: #1E293B;
+            --dark: #0F172A;
+            --gray: #64748B;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
         body { background-color: var(--light); color: var(--dark); line-height: 1.6; }
-        header { background-color: var(--primary); color: white; padding: 15px 20px; position: sticky; top: 0; z-index: 100; }
-        .top-bar { display: flex; justify-content: space-between; align-items: center; font-size: 13px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px; margin-bottom: 10px; }
+        
+        /* Professional Top Bar */
+        .top-bar { background: var(--dark); color: white; padding: 8px 5%; display: flex; justify-content: space-between; align-items: center; font-size: 13px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .top-bar-left span { margin-right: 20px; }
+        .top-bar select { background: #1E293B; color: white; border: 1px solid #475569; padding: 3px 6px; border-radius: 4px; font-size: 12px; }
+
+        /* Navigation Header */
+        header { background-color: var(--primary); color: white; padding: 15px 5%; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
         .nav-container { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 20px; font-weight: bold; color: var(--accent); display: flex; align-items: center; gap: 8px; }
-        nav { display: flex; gap: 15px; align-items: center; }
-        nav a { color: white; text-decoration: none; font-size: 14px; }
+        .logo { font-size: 22px; font-weight: 800; color: var(--accent); display: flex; align-items: center; gap: 10px; letter-spacing: 0.5px; }
+        nav { display: flex; gap: 20px; align-items: center; }
+        nav a { color: white; text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+        nav a:hover { color: var(--accent); }
+        .admin-link { background: rgba(255,255,255,0.1); padding: 6px 12px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.2); }
+
+        /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(10, 37, 64, 0.75), rgba(10, 37, 64, 0.75)), url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80');
-            background-size: cover; background-position: center; color: white; padding: 60px 20px; text-align: center;
+            background: linear-gradient(rgba(10, 37, 64, 0.85), rgba(10, 37, 64, 0.85)), url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1400&q=80');
+            background-size: cover; background-position: center; color: white; padding: 80px 5%; text-align: center;
         }
-        .hero h1 { font-size: 28px; margin-bottom: 10px; }
-        .hero p { font-size: 14px; margin-bottom: 25px; color: #CBD5E1; }
-        .track-card { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); color: var(--dark); max-width: 600px; margin: 0 auto; text-align: left; }
-        .track-input-group { display: flex; gap: 8px; margin-top: 12px; }
-        .track-input-group input { flex: 1; padding: 12px; border: 2px solid #E2E8F0; border-radius: 6px; font-size: 15px; }
-        .btn-primary { background-color: var(--accent); color: var(--primary); border: none; padding: 12px 20px; font-weight: bold; border-radius: 6px; cursor: pointer; font-size: 14px; }
+        .hero h1 { font-size: 36px; margin-bottom: 12px; font-weight: 700; }
+        .hero p { font-size: 16px; margin-bottom: 30px; color: #E2E8F0; max-width: 600px; margin-left: auto; margin-right: auto; }
+
+        /* Tracking Box */
+        .track-card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 15px 30px rgba(0,0,0,0.3); color: var(--dark); max-width: 650px; margin: 0 auto; text-align: left; border-top: 4px solid var(--accent); }
+        .track-card h3 { font-size: 18px; color: var(--primary); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+        .track-input-group { display: flex; gap: 10px; margin-top: 15px; }
+        .track-input-group input { flex: 1; padding: 14px; border: 2px solid #CBD5E1; border-radius: 6px; font-size: 15px; outline: none; transition: border-color 0.2s; }
+        .track-input-group input:focus { border-color: var(--primary); }
+        .btn-primary { background-color: var(--accent); color: var(--primary); border: none; padding: 14px 25px; font-weight: bold; border-radius: 6px; cursor: pointer; font-size: 15px; transition: opacity 0.2s; }
         .btn-primary:hover { opacity: 0.9; }
-        .container { padding: 30px 20px; max-width: 1000px; margin: 0 auto; }
-        .section-title { text-align: center; font-size: 22px; color: var(--primary); margin-bottom: 25px; }
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-bottom: 30px; }
-        .service-card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); text-align: center; }
-        .service-card i { font-size: 30px; color: var(--primary); margin-bottom: 10px; }
-        .card { background: white; padding: 20px; border-radius: 8px; margin-bottom: 25px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
-        .form-group { margin-bottom: 15px; }
-        .form-group label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 5px; }
-        .form-group input, .form-group textarea { width: 100%; padding: 10px; border: 1px solid #CBD5E1; border-radius: 6px; font-size: 14px; }
-        .floating-icons { position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; gap: 12px; z-index: 1000; }
-        .float-btn { width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; font-size: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); text-decoration: none; }
+
+        /* Container & Grid Sections */
+        .container { padding: 50px 5%; max-width: 1200px; margin: 0 auto; }
+        .section-title { text-align: center; font-size: 26px; color: var(--primary); margin-bottom: 35px; font-weight: 700; position: relative; }
+        .section-title::after { content: ''; display: block; width: 50px; height: 3px; background: var(--accent); margin: 8px auto 0; border-radius: 2px; }
+        
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 50px; }
+        .service-card { background: white; padding: 30px 20px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); text-align: center; border-bottom: 3px solid transparent; transition: transform 0.2s, border-color 0.2s; }
+        .service-card:hover { transform: translateY(-5px); border-color: var(--accent); }
+        .service-card i { font-size: 35px; color: var(--primary); margin-bottom: 15px; }
+        .service-card h3 { font-size: 18px; color: var(--primary); margin-bottom: 8px; }
+        .service-card p { font-size: 13px; color: var(--gray); }
+
+        /* Booking Card Form */
+        .card { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); max-width: 800px; margin: 0 auto; border: 1px solid #E2E8F0; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px; color: var(--primary); }
+        .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #CBD5E1; border-radius: 6px; font-size: 14px; outline: none; }
+        .form-group input:focus, .form-group textarea:focus { border-color: var(--primary); }
+
+        /* FAQ Section */
+        .faq-card { background: white; padding: 25px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-top: 40px; border: 1px solid #E2E8F0; }
+        .faq-card h4 { color: var(--primary); margin-bottom: 8px; font-size: 16px; }
+        .faq-card p { font-size: 14px; color: var(--gray); margin-bottom: 20px; }
+
+        /* Floating Contact Icons */
+        .floating-icons { position: fixed; bottom: 25px; right: 25px; display: flex; flex-direction: column; gap: 12px; z-index: 1000; }
+        .float-btn { width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; font-size: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); text-decoration: none; transition: transform 0.2s; }
+        .float-btn:hover { transform: scale(1.1); }
         .whatsapp-float { background-color: #25D366; }
         .email-float { background-color: #0A2540; }
-        footer { background: var(--primary); color: white; padding: 30px 20px 15px; font-size: 13px; text-align: center; }
-        .footer-info p { margin-bottom: 8px; color: #94A3B8; }
-        .footer-bottom { text-align: center; margin-top: 20px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); }
+
+        /* Footer */
+        footer { background: var(--primary); color: white; padding: 40px 5% 20px; font-size: 14px; border-top: 4px solid var(--accent); }
+        .footer-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; margin-bottom: 30px; }
+        .footer-info h3 { color: var(--accent); margin-bottom: 12px; font-size: 18px; }
+        .footer-info p { margin-bottom: 8px; color: #CBD5E1; font-size: 13px; }
+        .footer-bottom { text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); color: #94A3B8; font-size: 13px; }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="top-bar">
+    <!-- Professional Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-left">
             <span><i class="fas fa-id-card"></i> Reg: <strong>RC 8475621</strong></span>
             <span><i class="fas fa-envelope"></i> trackskyworld@gmail.com</span>
-            <div>
-                <select id="languageSelect" onchange="changeLanguage(this.value)" style="background: #0F172A; color: white; border: 1px solid rgba(255,255,255,0.2); padding: 3px 6px; border-radius: 4px; font-size: 12px;">
-                    <option value="en">English</option>
-                    <option value="es">Español</option>
-                    <option value="fr">Français</option>
-                    <option value="de">Deutsch</option>
-                    <option value="zh-CN">中文</option>
-                    <option value="pt">Português</option>
-                </select>
-            </div>
         </div>
+        <div class="top-bar-right">
+            <select id="languageSelect" onchange="changeLanguage(this.value)">
+                <option value="en">English</option>
+                <option value="es">Español</option>
+                <option value="fr">Français</option>
+                <option value="de">Deutsch</option>
+                <option value="zh-CN">中文</option>
+                <option value="pt">Português</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header>
         <div class="nav-container">
             <div class="logo"><i class="fas fa-plane-departure"></i> SKY WORLD</div>
             <nav>
                 <a href="#home">Home</a>
                 <a href="#services">Services</a>
                 <a href="#faq">FAQ</a>
-                <a href="#book">Book</a>
-                <a href="admin.html" style="background: rgba(255,255,255,0.1); padding: 5px 10px; border-radius: 4px;"><i class="fas fa-lock"></i> Admin</a>
+                <a href="#book">Book Shipment</a>
+                <a href="admin.html" class="admin-link"><i class="fas fa-lock"></i> Admin</a>
             </nav>
         </div>
     </header>
 
+    <!-- Hero Section with Universal Tracker -->
     <section class="hero" id="home">
-        <h1>Global Express Delivery Services</h1>
-        <p>Reliable, Fast, and Secure Freight & Courier Solutions Worldwide.</p>
+        <h1>Global Express Delivery & Logistics</h1>
+        <p>Reliable, Fast, and Secure Freight, Courier, and Supply Chain Solutions Worldwide.</p>
         
         <div class="track-card">
-            <h3 style="margin-bottom: 12px; color: var(--primary);"><i class="fas fa-search-location"></i> Track Your Shipment</h3>
+            <h3><i class="fas fa-search-location"></i> Track Your Shipment</h3>
+            <p style="font-size: 13px; color: var(--gray); margin-bottom: 5px;">Enter your tracking code below to check live status.</p>
             <div class="track-input-group">
                 <input type="text" id="trackingInput" placeholder="e.g. DLV189024161">
-                <button class="btn-primary" onclick="trackPackage()">Track</button>
+                <button class="btn-primary" onclick="trackPackage()">Track Now</button>
             </div>
             <div id="trackingResult"></div>
         </div>
     </section>
 
-    <div class="container">
-        <h2 class="section-title" id="services">Our Logistics Services</h2>
+    <!-- Logistics Services Grid -->
+    <div class="container" id="services">
+        <h2 class="section-title">Our Core Logistics Services</h2>
         <div class="services-grid">
-            <div class="service-card"><i class="fas fa-truck"></i><h3>Local & Nationwide</h3><p style="font-size:13px; color:#64748B;">Secure ground transit across regions.</p></div>
-            <div class="service-card"><i class="fas fa-globe-americas"></i><h3>International</h3><p style="font-size:13px; color:#64748B;">Global air & ocean cargo shipping.</p></div>
-            <div class="service-card"><i class="fas fa-bolt"></i><h3>Express</h3><p style="font-size:13px; color:#64748B;">Priority rush deliveries for urgent freight.</p></div>
-            <div class="service-card"><i class="fas fa-warehouse"></i><h3>Storage</h3><p style="font-size:13px; color:#64748B;">Safe warehousing and inventory management.</p></div>
+            <div class="service-card">
+                <i class="fas fa-truck"></i>
+                <h3>Local & Nationwide</h3>
+                <p>Secure ground transit and fast regional distribution networks.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-globe-americas"></i>
+                <h3>International Cargo</h3>
+                <p>Global air and ocean freight solutions with complete customs support.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-bolt"></i>
+                <h3>Express Courier</h3>
+                <p>Priority rush deliveries for urgent packages and sensitive documents.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-warehouse"></i>
+                <h3>Storage & Warehousing</h3>
+                <p>Safe warehousing, inventory management, and fulfillment storage.</p>
+            </div>
         </div>
 
+        <!-- Booking Form Section -->
         <h2 class="section-title" id="book">Book a Package Delivery</h2>
         <div class="card">
             <form onsubmit="sendBookingToWhatsApp(event)">
-                <div class="form-group"><label>Your Full Name</label><input type="text" id="custName" placeholder="John Doe" required></div>
-                <div class="form-group"><label>Pickup & Delivery Address</label><textarea id="addresses" rows="2" placeholder="From & To addresses" required></textarea></div>
-                <div class="form-group"><label>Package Description & Weight</label><input type="text" id="pkgDetails" placeholder="e.g. Documents, 4.5kg" required></div>
+                <div class="form-group">
+                    <label>Your Full Name</label>
+                    <input type="text" id="custName" placeholder="John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label>Pickup & Delivery Address</label>
+                    <textarea id="addresses" rows="2" placeholder="From & To destination addresses" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Package Description & Weight</label>
+                    <input type="text" id="pkgDetails" placeholder="e.g. Documents, 4.5kg" required>
+                </div>
                 <button type="submit" class="btn-primary" style="width: 100%;"><i class="fab fa-whatsapp"></i> Send Order Details to WhatsApp</button>
             </form>
         </div>
 
         <!-- FAQ Section -->
-        <section id="faq" style="padding: 20px 0;">
+        <section id="faq" style="margin-top: 50px;">
             <h2 class="section-title">Frequently Asked Questions</h2>
-            <div class="card">
-                <h4 style="color: var(--primary); margin-bottom: 5px;">How do I track my shipment?</h4>
-                <p style="font-size: 13px; color: #64748B; margin-bottom: 15px;">Simply type your tracking ID number into the tracking box at the top of the home page and click Track.</p>
+            <div class="faq-card">
+                <h4>How do I track my international shipment?</h4>
+                <p>Simply type your unique tracking ID number (starting with DLV) into the tracking box at the top of the home page and click Track Now to open your official receipt.</p>
                 
-                <h4 style="color: var(--primary); margin-bottom: 5px;">How long does delivery take?</h4>
-                <p style="font-size: 13px; color: #64748B;">Standard domestic shipments take 2-3 business days, while international shipments vary by destination.</p>
+                <h4>How long does express delivery take?</h4>
+                <p>Standard domestic shipments take 2 to 3 business days, while international freight delivery times vary depending on customs processing and destination clearance.</p>
             </div>
         </section>
     </div>
@@ -134,11 +205,19 @@
         <a href="https://wa.me/407856211227?text=Hello%20Manager,%20I%20have%20an%20inquiry%20about%20my%20delivery." class="float-btn whatsapp-float" target="_blank" title="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a>
     </div>
 
+    <!-- Professional Footer -->
     <footer>
-        <div class="footer-info">
-            <h3>Sky World Delivery Company</h3>
-            <p><i class="fas fa-map-marker-alt"></i> 14 Hanover Square, Mayfair, London W1S 1HP, United Kingdom</p>
-            <p><i class="fas fa-id-badge"></i> Registration Number: RC 8475621</p>
+        <div class="footer-content">
+            <div class="footer-info">
+                <h3>Sky World Delivery Company</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 14 Hanover Square, Mayfair, London W1S 1HP, United Kingdom</p>
+                <p><i class="fas fa-id-badge"></i> Registration Number: RC 8475621</p>
+            </div>
+            <div class="footer-info">
+                <h3>Global Operations</h3>
+                <p>Secure International Freight Forwarding</p>
+                <p>Customs Brokerage & Compliance Unit</p>
+            </div>
         </div>
         <div class="footer-bottom">
             <p>&copy; 2026 Sky World Delivery Company. All Rights Reserved.</p>
@@ -171,10 +250,11 @@
                 return;
             }
 
+            // Automatically tracks ANY valid code generated from your manager side starting with DLV
             if (trackingInput.toUpperCase().startsWith("DLV") && trackingInput.length >= 9) {
-                resultDiv.innerHTML = `<div style="background:#f8fafc; padding:14px; border-radius:6px; text-align:left; border:1px solid #cbd5e1; margin-top:8px;">
-                    <p style="margin:4px 0;"><strong>Tracking ID:</strong> ${trackingInput.toUpperCase()}</p>
-                    <p style="margin:4px 0;"><strong>Status:</strong> <span style="color:#047857; font-weight:bold;">En Tránsito / Despacho Aduanero</span></p>
+                resultDiv.innerHTML = `<div style="background:#f8fafc; padding:15px; border-radius:6px; text-align:left; border:1px solid #CBD5E1; margin-top:12px;">
+                    <p style="margin:4px 0; color: #0F172A;"><strong>Tracking ID:</strong> ${trackingInput.toUpperCase()}</p>
+                    <p style="margin:4px 0; color: #0F172A;"><strong>Status:</strong> <span style="color:#047857; font-weight:bold;">En Tránsito / Despacho Aduanero</span></p>
                     <a href="receipt.html" target="_blank" style="display:block; text-align:center; background:#FFC01D; color:#0A2540; padding:12px; font-weight:bold; border-radius:6px; text-decoration:none; margin-top:12px; font-size:14px;"><i class="fas fa-file-pdf"></i> Open Official Customs Receipt (PDF)</a>
                 </div>`;
                 return;
@@ -193,5 +273,5 @@
         }
     </script>
 </body>
-</html>
+                </html>
 
