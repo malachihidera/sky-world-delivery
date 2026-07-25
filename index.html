@@ -3,34 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sky World Express & Logistics | Global Shipping Services</title>
+    <title>Sky World Express & Logistics</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
             --primary: #0A2540;
             --accent: #FFC01D;
-            --secondary: #1E3A8A;
             --light: #F8FAFC;
             --dark: #0F172A;
             --gray: #64748B;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; scroll-behavior: smooth; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
         body { background-color: var(--light); color: var(--dark); line-height: 1.6; }
 
-        /* Top Header Bar */
-        .top-bar { background: var(--dark); color: white; padding: 8px 5%; display: flex; justify-content: space-between; align-items: center; font-size: 13px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        /* Top Bar */
+        .top-bar { background: var(--dark); color: white; padding: 8px 5%; display: flex; justify-content: space-between; align-items: center; font-size: 13px; }
         .top-bar-left span { margin-right: 20px; }
         .top-bar select { background: #1E293B; color: white; border: 1px solid #475569; padding: 3px 6px; border-radius: 4px; font-size: 12px; }
 
-        /* Main Navigation */
+        /* Navigation */
         header { background-color: var(--primary); color: white; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
         .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 12px 5%; max-width: 1300px; margin: 0 auto; }
-        .logo { font-size: 20px; font-weight: 800; color: var(--accent); display: flex; align-items: center; gap: 8px; text-decoration: none; }
+        .logo { font-size: 18px; font-weight: 800; color: var(--accent); display: flex; align-items: center; gap: 8px; text-decoration: none; }
         
-        nav { display: flex; align-items: center; }
         .nav-menu { display: flex; list-style: none; gap: 5px; align-items: center; }
         .nav-menu li { position: relative; }
-        .nav-menu a { color: white; text-decoration: none; font-size: 14px; font-weight: 500; padding: 10px 15px; display: block; transition: color 0.2s; border-radius: 4px; }
+        .nav-menu a { color: white; text-decoration: none; font-size: 14px; font-weight: 500; padding: 10px 14px; display: block; border-radius: 4px; transition: 0.2s; }
         .nav-menu a:hover, .nav-menu li:hover > a { color: var(--accent); background: rgba(255,255,255,0.05); }
         
         /* Dropdowns */
@@ -41,67 +39,63 @@
 
         .admin-btn { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); margin-left: 10px; }
 
-        /* Page Section Display Switcher (Controls multi-page tab views inside a single file) */
+        /* Sections */
         .page-section { display: none; padding: 40px 5%; max-width: 1200px; margin: 0 auto; min-height: 70vh; }
         .page-section.active-page { display: block; }
 
-        /* Hero / Home View Specifics */
-        .hero-banner { background: linear-gradient(rgba(10,37,64,0.8), rgba(10,37,64,0.8)), url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1400&q=80'); background-size: cover; background-position: center; color: white; padding: 80px 20px; text-align: center; border-radius: 8px; margin-bottom: 40px; }
-        .hero-banner h1 { font-size: 32px; font-weight: 700; margin-bottom: 10px; }
-        .hero-banner p { font-size: 15px; color: #CBD5E1; margin-bottom: 25px; }
+        /* Hero Banner */
+        .hero-banner { background: linear-gradient(rgba(10,37,64,0.85), rgba(10,37,64,0.85)), url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1400&q=80'); background-size: cover; background-position: center; color: white; padding: 70px 20px; text-align: center; border-radius: 8px; margin-bottom: 30px; }
+        .hero-banner h1 { font-size: 30px; font-weight: 700; margin-bottom: 8px; }
+        .hero-banner p { font-size: 14px; color: #CBD5E1; margin-bottom: 20px; }
 
-        /* Tracking Box */
-        .track-box { background: white; padding: 25px; border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); max-width: 650px; margin: 0 auto; color: var(--dark); text-align: left; }
-        .track-box h3 { font-size: 18px; color: var(--primary); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
-        .track-input-row { display: flex; gap: 10px; margin-top: 12px; }
-        .track-input-row input { flex: 1; padding: 12px; border: 2px solid #CBD5E1; border-radius: 6px; font-size: 14px; outline: none; }
-        .btn-main { background: var(--accent); color: var(--primary); border: none; padding: 12px 22px; font-weight: bold; border-radius: 6px; cursor: pointer; font-size: 14px; }
+        /* Tracking Component */
+        .track-box { background: white; padding: 22px; border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); max-width: 600px; margin: 0 auto; color: var(--dark); text-align: left; }
+        .track-box h3 { font-size: 16px; color: var(--primary); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+        .track-input-row { display: flex; gap: 10px; margin-top: 10px; }
+        .track-input-row input { flex: 1; padding: 10px 12px; border: 2px solid #CBD5E1; border-radius: 6px; font-size: 14px; outline: none; }
+        .btn-main { background: var(--accent); color: var(--primary); border: none; padding: 10px 20px; font-weight: bold; border-radius: 6px; cursor: pointer; font-size: 14px; }
         .btn-main:hover { opacity: 0.9; }
 
-        /* Section Titles & Grids */
-        .sec-title { font-size: 26px; color: var(--primary); margin-bottom: 20px; font-weight: 700; text-align: center; }
-        .sec-title::after { content: ''; display: block; width: 50px; height: 3px; background: var(--accent); margin: 8px auto 25px; border-radius: 2px; }
+        /* Grids & Cards */
+        .sec-title { font-size: 24px; color: var(--primary); margin-bottom: 20px; font-weight: 700; text-align: center; }
+        .sec-title::after { content: ''; display: block; width: 45px; height: 3px; background: var(--accent); margin: 6px auto 20px; border-radius: 2px; }
         
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 40px; }
-        .service-card { background: white; padding: 30px 20px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); text-align: center; border: 1px solid #E2E8F0; }
-        .service-card i { font-size: 35px; color: var(--primary); margin-bottom: 15px; }
-        .service-card h3 { font-size: 18px; color: var(--primary); margin-bottom: 10px; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 30px; }
+        .service-card { background: white; padding: 25px 20px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); text-align: center; border: 1px solid #E2E8F0; }
+        .service-card i { font-size: 32px; color: var(--primary); margin-bottom: 12px; }
+        .service-card h3 { font-size: 17px; color: var(--primary); margin-bottom: 8px; }
         .service-card p { font-size: 13px; color: var(--gray); margin-bottom: 15px; }
 
-        /* Standard Content Cards & Contact Panels */
-        .content-card { background: white; padding: 35px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #E2E8F0; margin-bottom: 30px; }
-        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 20px; }
+        .content-card { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #E2E8F0; margin-bottom: 25px; }
+
+        /* Contact Options Grid */
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-top: 20px; }
         .contact-option-box { background: #F8FAFC; padding: 25px; border-radius: 8px; border: 1px solid #CBD5E1; text-align: center; }
-        .contact-option-box i { font-size: 40px; margin-bottom: 15px; }
+        .contact-option-box i { font-size: 38px; margin-bottom: 12px; }
         .contact-option-box.wa i { color: #25D366; }
         .contact-option-box.em i { color: var(--primary); }
-        .contact-btn { display: inline-block; padding: 10px 20px; font-weight: bold; border-radius: 6px; text-decoration: none; margin-top: 15px; font-size: 14px; }
+        .contact-btn { display: inline-block; padding: 10px 18px; font-weight: bold; border-radius: 6px; text-decoration: none; margin-top: 12px; font-size: 13px; }
         .wa-btn { background: #25D366; color: white; }
         .em-btn { background: var(--primary); color: white; }
 
-        /* Booking Form */
-        .form-group { margin-bottom: 15px; }
-        .form-group label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 5px; color: var(--primary); }
-        .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #CBD5E1; border-radius: 6px; font-size: 14px; outline: none; }
-
-        /* Floating Contact Buttons */
+        /* Floating Contact Icons */
         .floating-icons { position: fixed; bottom: 25px; right: 25px; display: flex; flex-direction: column; gap: 12px; z-index: 1000; }
-        .float-btn { width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; font-size: 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); text-decoration: none; transition: transform 0.2s; }
+        .float-btn { width: 48px; height: 48px; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; font-size: 22px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); text-decoration: none; transition: transform 0.2s; }
         .float-btn:hover { transform: scale(1.1); }
         .whatsapp-float { background-color: #25D366; }
         .email-float { background-color: var(--primary); }
 
         /* Footer */
-        footer { background: var(--primary); color: white; padding: 40px 5% 20px; border-top: 4px solid var(--accent); margin-top: 40px; }
-        .footer-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; margin-bottom: 25px; }
-        .footer-info h3 { color: var(--accent); margin-bottom: 10px; font-size: 16px; }
-        .footer-info p { font-size: 13px; color: #CBD5E1; margin-bottom: 6px; }
-        .footer-bottom { text-align: center; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); color: #94A3B8; font-size: 13px; }
+        footer { background: var(--primary); color: white; padding: 35px 5% 15px; border-top: 4px solid var(--accent); margin-top: 40px; }
+        .footer-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 25px; margin-bottom: 20px; }
+        .footer-info h3 { color: var(--accent); margin-bottom: 8px; font-size: 15px; }
+        .footer-info p { font-size: 13px; color: #CBD5E1; margin-bottom: 5px; }
+        .footer-bottom { text-align: center; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); color: #94A3B8; font-size: 12px; }
     </style>
 </head>
 <body>
 
-    <!-- Top Utility Bar -->
+    <!-- Top Bar -->
     <div class="top-bar">
         <div class="top-bar-left">
             <span><i class="fas fa-id-card"></i> Reg: <strong>RC 8475621</strong></span>
@@ -114,7 +108,6 @@
                 <option value="fr">Français</option>
                 <option value="de">Deutsch</option>
                 <option value="zh-CN">中文</option>
-                <option value="pt">Português</option>
             </select>
         </div>
     </div>
@@ -149,7 +142,7 @@
         </div>
     </header>
 
-    <!-- ================= 1. HOME PAGE VIEW ================= -->
+    <!-- ================= 1. HOME VIEW ================= -->
     <div id="page-home" class="page-section active-page">
         <div class="hero-banner">
             <h1>Global Express Delivery Services</h1>
@@ -170,90 +163,80 @@
                 <i class="fas fa-truck"></i>
                 <h3>Express Courier</h3>
                 <p>Door-to-door solutions for time-sensitive packages and business documents.</p>
-                <button class="btn-main" style="padding: 6px 14px; font-size: 12px;" onclick="switchPage('courier')">View Courier</button>
+                <button class="btn-main" style="padding: 5px 12px; font-size: 12px;" onclick="switchPage('courier')">View Courier</button>
             </div>
             <div class="service-card">
                 <i class="fas fa-globe-americas"></i>
                 <h3>International Freight</h3>
-                <p>Global air cargo and ocean shipping networks with full customs brokerage support.</p>
-                <button class="btn-main" style="padding: 6px 14px; font-size: 12px;" onclick="switchPage('logistics')">View Logistics</button>
+                <p>Global air cargo and ocean shipping networks with full customs support.</p>
+                <button class="btn-main" style="padding: 5px 12px; font-size: 12px;" onclick="switchPage('logistics')">View Logistics</button>
             </div>
             <div class="service-card">
                 <i class="fas fa-headset"></i>
                 <h3>24/7 Support</h3>
-                <p>Direct communication channels via WhatsApp and Email for all shipment inquiries.</p>
-                <button class="btn-main" style="padding: 6px 14px; font-size: 12px;" onclick="switchPage('contact')">Contact Us</button>
+                <p>Direct communication channels via WhatsApp and Email for inquiries.</p>
+                <button class="btn-main" style="padding: 5px 12px; font-size: 12px;" onclick="switchPage('contact')">Contact Us</button>
             </div>
         </div>
     </div>
 
-    <!-- ================= 2. ABOUT US PAGE VIEW ================= -->
+    <!-- ================= 2. ABOUT US VIEW ================= -->
     <div id="page-about" class="page-section">
         <h2 class="sec-title">About Sky World Express & Logistics</h2>
         <div class="content-card">
-            <p style="margin-bottom: 15px; color: var(--dark);"><strong>Sky World Express</strong> is a premier global logistics and freight forwarding company established with a commitment to providing secure, rapid, and dependable supply chain solutions. Operating from major global transport hubs, we specialize in international express door-to-door delivery, comprehensive customs brokerage, and heavy cargo transit.</p>
-            <p style="margin-bottom: 15px; color: var(--dark);">Our mission is to bridge distances for businesses and individuals alike, ensuring that every parcel, document, or freight shipment is handled with utmost professional care, tracked in real-time, and delivered precisely on schedule.</p>
-            <div style="background: #F8FAFC; padding: 20px; border-left: 4px solid var(--accent); margin-top: 20px;">
+            <p style="margin-bottom: 14px; font-size: 14px;"><strong>Sky World Express</strong> is a premier global logistics and freight forwarding company established to provide secure, rapid, and dependable supply chain solutions. Operating from major global transport hubs, we specialize in international express door-to-door delivery, comprehensive customs brokerage, and heavy cargo transit.</p>
+            <p style="margin-bottom: 14px; font-size: 14px;">Our mission is to bridge distances for businesses and individuals alike, ensuring that every parcel, document, or freight shipment is handled with professional care, tracked in real-time, and delivered precisely on schedule.</p>
+            <div style="background: #F8FAFC; padding: 18px; border-left: 4px solid var(--accent); margin-top: 15px; font-size: 14px;">
                 <p><strong>Corporate Registration:</strong> RC 8475621</p>
                 <p><strong>Headquarters:</strong> 14 Hanover Square, Mayfair, London W1S 1HP, United Kingdom</p>
             </div>
         </div>
     </div>
 
-    <!-- ================= 3. COURIER SERVICE PAGE VIEW ================= -->
+    <!-- ================= 3. COURIER SERVICE VIEW ================= -->
     <div id="page-courier" class="page-section">
         <h2 class="sec-title">Courier Services</h2>
         <div class="services-grid">
             <div class="service-card">
                 <i class="fas fa-box-open"></i>
                 <h3>Inbound Express Delivery</h3>
-                <p>Fast and reliable reception and customs clearance processing for packages arriving into your country from overseas partners and international vendors.</p>
+                <p>Fast reception and customs clearance processing for packages arriving into your country from overseas vendors.</p>
             </div>
             <div class="service-card">
                 <i class="fas fa-paper-plane"></i>
                 <h3>Outbound Express Delivery</h3>
-                <p>Speedy dispatch solutions for sending time-sensitive documents, retail goods, and commercial packages out to global recipients securely.</p>
+                <p>Speedy dispatch solutions for sending time-sensitive documents and retail goods out to global recipients securely.</p>
             </div>
-        </div>
-        
-        <div class="content-card">
-            <h3 style="color: var(--primary); margin-bottom: 15px;">Book a Courier Dispatch</h3>
-            <form onsubmit="sendBookingToWhatsApp(event)">
-                <div class="form-group"><label>Your Full Name</label><input type="text" id="custName" placeholder="John Doe" required></div>
-                <div class="form-group"><label>Pickup & Delivery Address</label><textarea id="addresses" rows="2" placeholder="From & To destination addresses" required></textarea></div>
-                <div class="form-group"><label>Package Description & Weight</label><input type="text" id="pkgDetails" placeholder="e.g. Documents, 4.5kg" required></div>
-                <button type="submit" class="btn-main" style="width: 100%;"><i class="fab fa-whatsapp"></i> Send Booking Details to WhatsApp</button>
-            </form>
         </div>
     </div>
 
-    <!-- ================= 4. LOGISTICS SERVICE PAGE VIEW ================= -->
+    <!-- ================= 4. LOGISTICS SERVICE VIEW ================= -->
     <div id="page-logistics" class="page-section">
         <h2 class="sec-title">Logistics & Freight Services</h2>
         <div class="services-grid">
             <div class="service-card">
                 <i class="fas fa-plane"></i>
                 <h3>Air Freight Forwarding</h3>
-                <p>Full-service import and export air cargo solutions connecting major global trading centers with expedited priority turnaround.</p>
+                <p>Full-service import and export air cargo solutions connecting major global trading centers.</p>
             </div>
             <div class="service-card">
                 <i class="fas fa-ship"></i>
                 <h3>Ocean Cargo Shipping</h3>
-                <p>Cost-effective sea freight network relationship with leading carriers for bulk commercial shipping and large cargo containers.</p>
+                <p>Cost-effective sea freight network relationship with leading carriers for bulk commercial shipping.</p>
             </div>
             <div class="service-card">
                 <i class="fas fa-file-invoice-dollar"></i>
                 <h3>Customs Clearance & Brokerage</h3>
-                <p>Expert compliance support navigating local legislation and duty payments to speed up border clearances smoothly.</p>
+                <p>Expert compliance support navigating local legislation and duty payments smoothly.</p>
             </div>
         </div>
     </div>
 
-    <!-- ================= 5. TRACKING PAGE VIEW ================= -->
+    <!-- ================= 5. TRACKING VIEW ================= -->
     <div id="page-tracking" class="page-section">
         <h2 class="sec-title">Shipment Tracking Portal</h2>
-        <div class="content-card" style="max-width: 700px; margin: 0 auto; text-align: center;">
-            <p style="color: var(--gray); margin-bottom: 20px; font-size: 14px;">Enter your unique waybill tracking ID generated by our management team to view live transit milestones and access official customs clearance documents.</p>
+        <div class="content-card" style="max-width: 650px; margin: 0 auto; text-align: center;">
+            <p style="color: var(--gray); margin-bottom: 20px; font-size: 14px;">Enter your unique waybill tracking ID generated by our management team to view live transit milestones and official customs receipt links.</p>
             <div class="track-input-row" style="margin-bottom: 15px;">
                 <input type="text" id="dedicatedTrackingInput" placeholder="Enter tracking ID (e.g. DLV189024161)">
                 <button class="btn-main" onclick="executeTracking('dedicatedTrackingInput', 'dedicatedTrackingResult')">Track Now</button>
@@ -262,23 +245,23 @@
         </div>
     </div>
 
-    <!-- ================= 6. CONTACT US PAGE VIEW ================= -->
+    <!-- ================= 6. CONTACT US VIEW ================= -->
     <div id="page-contact" class="page-section">
         <h2 class="sec-title">Get in Touch with Management</h2>
-        <div class="content-card" style="text-align: center; max-width: 800px; margin: 0 auto;">
-            <p style="color: var(--gray); margin-bottom: 25px;">Have questions regarding a delivery, customs fee, or cargo booking? Reach out directly via WhatsApp or Email using the official channels below:</p>
+        <div class="content-card" style="text-align: center; max-width: 750px; margin: 0 auto;">
+            <p style="color: var(--gray); margin-bottom: 25px; font-size: 14px;">Have questions regarding a delivery, customs fee, or cargo booking? Reach out instantly via WhatsApp or Email using our official support desks below:</p>
             
             <div class="contact-grid">
                 <div class="contact-option-box wa">
                     <i class="fab fa-whatsapp"></i>
-                    <h3 style="color: var(--primary); font-size: 16px;">WhatsApp Support</h3>
-                    <p style="font-size: 13px; color: var(--gray); margin-top: 5px;">Chat instantly with our active manager desk.</p>
+                    <h3 style="color: var(--primary); font-size: 15px;">WhatsApp Support</h3>
+                    <p style="font-size: 13px; color: var(--gray); margin-top: 5px;">Chat directly with our active manager desk.</p>
                     <a href="https://wa.me/407856211227?text=Hello%20Manager,%20I%20have%20an%20inquiry%20about%20my%20delivery." target="_blank" class="contact-btn wa-btn"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
                 </div>
                 
                 <div class="contact-option-box em">
                     <i class="fas fa-envelope"></i>
-                    <h3 style="color: var(--primary); font-size: 16px;">Email Support</h3>
+                    <h3 style="color: var(--primary); font-size: 15px;">Email Support</h3>
                     <p style="font-size: 13px; color: var(--gray); margin-top: 5px;">Send detailed documentation files or formal inquiries.</p>
                     <a href="mailto:trackskyworld@gmail.com" class="contact-btn em-btn"><i class="fas fa-envelope"></i> Send Email</a>
                 </div>
@@ -286,12 +269,51 @@
         </div>
     </div>
 
-    <!-- Hidden Google Translate Element -->
+    <!-- Hidden Translate Element -->
     <div id="google_translate_element" style="display:none;"></div>
 
-    <!-- Floating Direct Contact Icons (Always present across all pages) -->
+    <!-- Floating Direct Contact Buttons -->
     <div class="floating-icons">
         <a href="mailto:trackskyworld@gmail.com" class="float-btn email-float" title="Email Manager"><i class="fas fa-envelope"></i></a>
         <a href="https://wa.me/407856211227?text=Hello%20Manager,%20I%20have%20an%20inquiry%20about%20my%20delivery." class="float-btn whatsapp-float" target="_blank" title="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a>
     </div>
-    
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-info">
+                <h3>Sky World Express & Logistics</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 14 Hanover Square, Mayfair, London W1S 1HP, UK</p>
+                <p><i class="fas fa-id-badge"></i> Registration Number: RC 8475621</p>
+            </div>
+            <div class="footer-info">
+                <h3>Quick Navigation</h3>
+                <p><a href="#" onclick="switchPage('home')" style="color:#CBD5E1; text-decoration:none;">Home</a> | <a href="#" onclick="switchPage('about')" style="color:#CBD5E1; text-decoration:none;">About Us</a> | <a href="#" onclick="switchPage('contact')" style="color:#CBD5E1; text-decoration:none;">Contact Us</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Sky World Express & Logistics Co. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Google Translate Script -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'en', autoDisplay: false}, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <script>
+        // Switch Section Display Dynamically
+        function switchPage(pageId) {
+            var pages = document.querySelectorAll('.page-section');
+            pages.forEach(function(p) {
+                p.classList.remove('active-page');
+            });
+            var targetPage = document.getElementById('page-' + pageId);
+            if (targetPage) {
+                targetPage.classList.add('active-page');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        
