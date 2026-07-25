@@ -28,7 +28,7 @@
         
         .nav-menu { display: flex; list-style: none; gap: 5px; align-items: center; }
         .nav-menu li { position: relative; }
-        .nav-menu a { color: white; text-decoration: none; font-size: 14px; font-weight: 500; padding: 10px 14px; display: block; border-radius: 4px; transition: 0.2s; }
+        .nav-menu a { color: white; text-decoration: none; font-size: 14px; font-weight: 500; padding: 10px 14px; display: block; border-radius: 4px; transition: 0.2s; cursor: pointer; }
         .nav-menu a:hover, .nav-menu li:hover > a { color: var(--accent); background: rgba(255,255,255,0.05); }
         
         /* Dropdowns */
@@ -39,9 +39,9 @@
 
         .admin-btn { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); margin-left: 10px; }
 
-        /* Sections Control */
+        /* Sections Control - Hidden by Default, Shown Strictly One-by-One */
         .page-section { display: none; padding: 40px 5%; max-width: 1200px; margin: 0 auto; min-height: 70vh; }
-        .page-section.active-page { display: block; }
+        .page-section.active-page { display: block !important; }
 
         /* Hero Banner (Home Only) */
         .hero-banner { background: linear-gradient(rgba(10,37,64,0.85), rgba(10,37,64,0.85)), url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1400&q=80'); background-size: cover; background-position: center; color: white; padding: 80px 20px; text-align: center; border-radius: 8px; margin-bottom: 30px; }
@@ -124,27 +124,27 @@
     <!-- Navigation Bar -->
     <header>
         <div class="nav-container">
-            <a href="#" onclick="showSection('home', event)" class="logo"><i class="fas fa-plane-departure"></i> SKY WORLD EXPRESS</a>
+            <a onclick="showSection('home', event)" class="logo"><i class="fas fa-plane-departure"></i> SKY WORLD EXPRESS</a>
             <nav>
                 <ul class="nav-menu">
-                    <li><a href="#" onclick="showSection('home', event)">Home</a></li>
-                    <li><a href="#" onclick="showSection('about', event)">About Us</a></li>
+                    <li><a onclick="showSection('home', event)">Home</a></li>
+                    <li><a onclick="showSection('about', event)">About Us</a></li>
                     <li>
-                        <a href="#" onclick="showSection('courier', event)">Courier Service <i class="fas fa-chevron-down" style="font-size: 10px;"></i></a>
+                        <a onclick="showSection('courier', event)">Courier Service <i class="fas fa-chevron-down" style="font-size: 10px;"></i></a>
                         <ul class="dropdown">
-                            <li><a href="#" onclick="showSection('courier', event)">Inbound Express</a></li>
-                            <li><a href="#" onclick="showSection('courier', event)">Outbound Express</a></li>
+                            <li><a onclick="showSection('courier', event)">Inbound Express</a></li>
+                            <li><a onclick="showSection('courier', event)">Outbound Express</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href="#" onclick="showSection('logistics', event)">Logistics Service <i class="fas fa-chevron-down" style="font-size: 10px;"></i></a>
+                        <a onclick="showSection('logistics', event)">Logistics Service <i class="fas fa-chevron-down" style="font-size: 10px;"></i></a>
                         <ul class="dropdown">
-                            <li><a href="#" onclick="showSection('logistics', event)">Air & Ocean Freight</a></li>
-                            <li><a href="#" onclick="showSection('logistics', event)">Customs Clearance</a></li>
+                            <li><a onclick="showSection('logistics', event)">Air & Ocean Freight</a></li>
+                            <li><a onclick="showSection('logistics', event)">Customs Clearance</a></li>
                         </ul>
                     </li>
-                    <li><a href="#" onclick="showSection('tracking', event)">Tracking</a></li>
-                    <li><a href="#" onclick="showSection('contact', event)">Contact Us</a></li>
+                    <li><a onclick="showSection('tracking', event)">Tracking</a></li>
+                    <li><a onclick="showSection('contact', event)">Contact Us</a></li>
                     <li><a href="admin.html" class="admin-btn"><i class="fas fa-lock"></i> Admin</a></li>
                 </ul>
             </nav>
@@ -293,7 +293,7 @@
             </div>
             <div class="footer-info">
                 <h3>Quick Navigation</h3>
-                <p><a href="#" onclick="showSection('home', event)" style="color:#CBD5E1; text-decoration:none;">Home</a> | <a href="#" onclick="showSection('about', event)" style="color:#CBD5E1; text-decoration:none;">About Us</a> | <a href="#" onclick="showSection('contact', event)" style="color:#CBD5E1; text-decoration:none;">Contact Us</a></p>
+                <p><a onclick="showSection('home', event)" style="color:#CBD5E1; text-decoration:none; cursor:pointer;">Home</a> | <a onclick="showSection('about', event)" style="color:#CBD5E1; text-decoration:none; cursor:pointer;">About Us</a> | <a onclick="showSection('contact', event)" style="color:#CBD5E1; text-decoration:none; cursor:pointer;">Contact Us</a></p>
             </div>
         </div>
         <div class="footer-bottom">
@@ -307,4 +307,4 @@
             new google.translate.TranslateElement({pageLanguage: 'en', autoDisplay: false}, 'google_translate_element');
         }
     </script>
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=
