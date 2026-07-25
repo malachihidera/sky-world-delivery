@@ -39,7 +39,7 @@
 
         .admin-btn { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); margin-left: 10px; }
 
-        /* Sections */
+        /* Sections Control */
         .page-section { display: none; padding: 40px 5%; max-width: 1200px; margin: 0 auto; min-height: 70vh; }
         .page-section.active-page { display: block; }
 
@@ -68,7 +68,7 @@
 
         .content-card { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #E2E8F0; margin-bottom: 25px; }
 
-        /* Contact Options Grid */
+        /* Contact Grid */
         .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-top: 20px; }
         .contact-option-box { background: #F8FAFC; padding: 25px; border-radius: 8px; border: 1px solid #CBD5E1; text-align: center; }
         .contact-option-box i { font-size: 38px; margin-bottom: 12px; }
@@ -115,35 +115,35 @@
     <!-- Navigation Bar -->
     <header>
         <div class="nav-container">
-            <a href="#" onclick="switchPage('home')" class="logo"><i class="fas fa-plane-departure"></i> SKY WORLD EXPRESS</a>
+            <a href="#" onclick="showSection('home', event)" class="logo"><i class="fas fa-plane-departure"></i> SKY WORLD EXPRESS</a>
             <nav>
                 <ul class="nav-menu">
-                    <li><a href="#" onclick="switchPage('home')">Home</a></li>
-                    <li><a href="#" onclick="switchPage('about')">About Us</a></li>
+                    <li><a href="#" onclick="showSection('home', event)">Home</a></li>
+                    <li><a href="#" onclick="showSection('about', event)">About Us</a></li>
                     <li>
-                        <a href="#" onclick="switchPage('courier')">Courier Service <i class="fas fa-chevron-down" style="font-size: 10px;"></i></a>
+                        <a href="#" onclick="showSection('courier', event)">Courier Service <i class="fas fa-chevron-down" style="font-size: 10px;"></i></a>
                         <ul class="dropdown">
-                            <li><a href="#" onclick="switchPage('courier')">Inbound Express</a></li>
-                            <li><a href="#" onclick="switchPage('courier')">Outbound Express</a></li>
+                            <li><a href="#" onclick="showSection('courier', event)">Inbound Express</a></li>
+                            <li><a href="#" onclick="showSection('courier', event)">Outbound Express</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href="#" onclick="switchPage('logistics')">Logistics Service <i class="fas fa-chevron-down" style="font-size: 10px;"></i></a>
+                        <a href="#" onclick="showSection('logistics', event)">Logistics Service <i class="fas fa-chevron-down" style="font-size: 10px;"></i></a>
                         <ul class="dropdown">
-                            <li><a href="#" onclick="switchPage('logistics')">Air & Ocean Freight</a></li>
-                            <li><a href="#" onclick="switchPage('logistics')">Customs Clearance</a></li>
+                            <li><a href="#" onclick="showSection('logistics', event)">Air & Ocean Freight</a></li>
+                            <li><a href="#" onclick="showSection('logistics', event)">Customs Clearance</a></li>
                         </ul>
                     </li>
-                    <li><a href="#" onclick="switchPage('tracking')">Tracking</a></li>
-                    <li><a href="#" onclick="switchPage('contact')">Contact Us</a></li>
+                    <li><a href="#" onclick="showSection('tracking', event)">Tracking</a></li>
+                    <li><a href="#" onclick="showSection('contact', event)">Contact Us</a></li>
                     <li><a href="admin.html" class="admin-btn"><i class="fas fa-lock"></i> Admin</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- ================= 1. HOME VIEW ================= -->
-    <div id="page-home" class="page-section active-page">
+    <!-- ================= 1. HOME SECTION ================= -->
+    <section id="section-home" class="page-section active-page">
         <div class="hero-banner">
             <h1>Global Express Delivery Services</h1>
             <p>Reliable, Fast, and Secure Freight & Courier Solutions Worldwide.</p>
@@ -163,25 +163,25 @@
                 <i class="fas fa-truck"></i>
                 <h3>Express Courier</h3>
                 <p>Door-to-door solutions for time-sensitive packages and business documents.</p>
-                <button class="btn-main" style="padding: 5px 12px; font-size: 12px;" onclick="switchPage('courier')">View Courier</button>
+                <button class="btn-main" style="padding: 5px 12px; font-size: 12px;" onclick="showSection('courier', event)">View Courier</button>
             </div>
             <div class="service-card">
                 <i class="fas fa-globe-americas"></i>
                 <h3>International Freight</h3>
                 <p>Global air cargo and ocean shipping networks with full customs support.</p>
-                <button class="btn-main" style="padding: 5px 12px; font-size: 12px;" onclick="switchPage('logistics')">View Logistics</button>
+                <button class="btn-main" style="padding: 5px 12px; font-size: 12px;" onclick="showSection('logistics', event)">View Logistics</button>
             </div>
             <div class="service-card">
                 <i class="fas fa-headset"></i>
                 <h3>24/7 Support</h3>
                 <p>Direct communication channels via WhatsApp and Email for inquiries.</p>
-                <button class="btn-main" style="padding: 5px 12px; font-size: 12px;" onclick="switchPage('contact')">Contact Us</button>
+                <button class="btn-main" style="padding: 5px 12px; font-size: 12px;" onclick="showSection('contact', event)">Contact Us</button>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- ================= 2. ABOUT US VIEW ================= -->
-    <div id="page-about" class="page-section">
+    <!-- ================= 2. ABOUT US SECTION ================= -->
+    <section id="section-about" class="page-section">
         <h2 class="sec-title">About Sky World Express & Logistics</h2>
         <div class="content-card">
             <p style="margin-bottom: 14px; font-size: 14px;"><strong>Sky World Express</strong> is a premier global logistics and freight forwarding company established to provide secure, rapid, and dependable supply chain solutions. Operating from major global transport hubs, we specialize in international express door-to-door delivery, comprehensive customs brokerage, and heavy cargo transit.</p>
@@ -191,10 +191,10 @@
                 <p><strong>Headquarters:</strong> 14 Hanover Square, Mayfair, London W1S 1HP, United Kingdom</p>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- ================= 3. COURIER SERVICE VIEW ================= -->
-    <div id="page-courier" class="page-section">
+    <!-- ================= 3. COURIER SERVICE SECTION ================= -->
+    <section id="section-courier" class="page-section">
         <h2 class="sec-title">Courier Services</h2>
         <div class="services-grid">
             <div class="service-card">
@@ -208,10 +208,10 @@
                 <p>Speedy dispatch solutions for sending time-sensitive documents and retail goods out to global recipients securely.</p>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- ================= 4. LOGISTICS SERVICE VIEW ================= -->
-    <div id="page-logistics" class="page-section">
+    <!-- ================= 4. LOGISTICS SERVICE SECTION ================= -->
+    <section id="section-logistics" class="page-section">
         <h2 class="sec-title">Logistics & Freight Services</h2>
         <div class="services-grid">
             <div class="service-card">
@@ -230,10 +230,10 @@
                 <p>Expert compliance support navigating local legislation and duty payments smoothly.</p>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- ================= 5. TRACKING VIEW ================= -->
-    <div id="page-tracking" class="page-section">
+    <!-- ================= 5. TRACKING SECTION ================= -->
+    <section id="section-tracking" class="page-section">
         <h2 class="sec-title">Shipment Tracking Portal</h2>
         <div class="content-card" style="max-width: 650px; margin: 0 auto; text-align: center;">
             <p style="color: var(--gray); margin-bottom: 20px; font-size: 14px;">Enter your unique waybill tracking ID generated by our management team to view live transit milestones and official customs receipt links.</p>
@@ -243,10 +243,10 @@
             </div>
             <div id="dedicatedTrackingResult" style="text-align: left;"></div>
         </div>
-    </div>
+    </section>
 
-    <!-- ================= 6. CONTACT US VIEW ================= -->
-    <div id="page-contact" class="page-section">
+    <!-- ================= 6. CONTACT US SECTION ================= -->
+    <section id="section-contact" class="page-section">
         <h2 class="sec-title">Get in Touch with Management</h2>
         <div class="content-card" style="text-align: center; max-width: 750px; margin: 0 auto;">
             <p style="color: var(--gray); margin-bottom: 25px; font-size: 14px;">Have questions regarding a delivery, customs fee, or cargo booking? Reach out instantly via WhatsApp or Email using our official support desks below:</p>
@@ -267,7 +267,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- Hidden Translate Element -->
     <div id="google_translate_element" style="display:none;"></div>
@@ -288,7 +288,7 @@
             </div>
             <div class="footer-info">
                 <h3>Quick Navigation</h3>
-                <p><a href="#" onclick="switchPage('home')" style="color:#CBD5E1; text-decoration:none;">Home</a> | <a href="#" onclick="switchPage('about')" style="color:#CBD5E1; text-decoration:none;">About Us</a> | <a href="#" onclick="switchPage('contact')" style="color:#CBD5E1; text-decoration:none;">Contact Us</a></p>
+                <p><a href="#" onclick="showSection('home', event)" style="color:#CBD5E1; text-decoration:none;">Home</a> | <a href="#" onclick="showSection('about', event)" style="color:#CBD5E1; text-decoration:none;">About Us</a> | <a href="#" onclick="showSection('contact', event)" style="color:#CBD5E1; text-decoration:none;">Contact Us</a></p>
             </div>
         </div>
         <div class="footer-bottom">
@@ -305,15 +305,10 @@
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
     <script>
-        // Switch Section Display Dynamically
-        function switchPage(pageId) {
-            var pages = document.querySelectorAll('.page-section');
-            pages.forEach(function(p) {
-                p.classList.remove('active-page');
-            });
-            var targetPage = document.getElementById('page-' + pageId);
-            if (targetPage) {
-                targetPage.classList.add('active-page');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-        
+        // Exact Single-Page Section Switcher Function
+        function showSection(sectionId, event) {
+            if (event) event.preventDefault();
+            
+            var sections = document.querySelectorAll('.page-section');
+            sections.forEach(function(sec) {
+     
